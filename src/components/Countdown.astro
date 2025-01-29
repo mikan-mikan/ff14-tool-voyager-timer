@@ -13,27 +13,21 @@ const attributes = time !== null ? { "data-time": time } : {};
 
 <script>
   function updateCountdown() {
-    console.log("🔍 updateCountdown() が実行されました");
-
     document.querySelectorAll("[data-id]").forEach((timerElement) => {
       const id = timerElement.getAttribute("data-id");
       const timeAttr = timerElement.getAttribute("data-time");
-
-      console.log(`📌 潜水艦 ${id} の data-time:`, timeAttr);
 
       if (
         !timeAttr ||
         Number.isNaN(Number(timeAttr)) ||
         timeAttr.trim() === ""
       ) {
-        console.log(`⚠️ 潜水艦 ${id}: 無効なタイムデータ (${timeAttr})`);
         (timerElement as HTMLElement).innerText = "データがありません。";
         return;
       }
 
       const time = parseInt(timeAttr, 10);
       let timeLeft = time - Date.now();
-      console.log(`⏳ 潜水艦 ${id} の残り時間: ${timeLeft} ミリ秒`);
 
       if (timeLeft > 0) {
         const days = Math.floor(timeLeft / 86400000);
@@ -43,7 +37,6 @@ const attributes = time !== null ? { "data-time": time } : {};
         (timerElement as HTMLElement).innerText =
           `残り時間: ${days}日 ${hours}時間 ${minutes}分 ${seconds}秒`;
       } else {
-        console.log(`🚢 潜水艦 ${id} 到着！`);
         (timerElement as HTMLElement).innerText = "到着！（完了）";
       }
     });
