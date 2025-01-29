@@ -1,0 +1,56 @@
+---
+const { id } = Astro.props;
+---
+
+<div data-id={id}>
+  <h3>潜水艦{id}</h3>
+  <label
+    ><input type="radio" name={`method${id}`} value="relative" checked /> 残り時間</label
+  >
+  <label
+    ><input type="radio" name={`method${id}`} value="absolute" /> 終了時間</label
+  >
+
+  <div id={`relative-inputs-${id}`}>
+    <input type="number" id={`days-${id}`} placeholder="日" />
+    <input type="number" id={`hours-${id}`} placeholder="時間" />
+    <input type="number" id={`minutes-${id}`} placeholder="分" />
+  </div>
+
+  <div id={`absolute-inputs-${id}`} style="display: none;">
+    <input type="datetime-local" id={`absolute-time-${id}`} />
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("[data-id]").forEach((container) => {
+      const id = container.getAttribute("data-id");
+
+      document
+        .querySelectorAll(`input[name="method${id}"]`)
+        .forEach((radio) => {
+          radio.addEventListener("change", () => {
+            const relativeInputs = document.getElementById(
+              `relative-inputs-${id}`
+            );
+            const absoluteInputs = document.getElementById(
+              `absolute-inputs-${id}`
+            );
+            if (relativeInputs) {
+              relativeInputs.style.display =
+                (radio as HTMLInputElement).value === "relative"
+                  ? "block"
+                  : "none";
+            }
+            if (absoluteInputs) {
+              absoluteInputs.style.display =
+                (radio as HTMLInputElement).value === "absolute"
+                  ? "block"
+                  : "none";
+            }
+          });
+        });
+    });
+  });
+</script>

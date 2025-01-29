@@ -10,5 +10,10 @@
   },
   "dependencies": {
     "astro": "^5.1.10"
+  },
+  "pnpm": {
+    "executionEnv": {
+      "nodeVersion": "22.13.1"
+    }
   }
 }

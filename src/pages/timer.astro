@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const urlParams = new URL(Astro.request.url).searchParams;
+const times = Array.from({ length: 4 }, (_, i) =>
+  urlParams.get(`time${i + 1}`)
+);
+---
+
+<BaseLayout title="タイマー">
+  <h1>タイマー</h1>
+  <p>現在の時刻: {new Date().toLocaleString()}</p>
+
+  {
+    times.map((time, index) => (
+      <p>
+        潜水艦{index + 1}{" "}
+        <span id={`timer${index + 1}`}>データがありません。</span>
+      </p>
+    ))
+  }
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      function updateCountdown() {
+        const urlParams = new URLSearchParams(window.location.search);
+        for (let i = 1; i <= 4; i++) {
+          const time = urlParams.get(`time${i}`);
+          const timerElement = document.getElementById(`timer${i}`);
+
+          if (time && timerElement) {
+            const timeLeft = parseInt(time) - Date.now();
+            if (timeLeft > 0) {
+              const days = Math.floor(timeLeft / 86400000);
+              const hours = Math.floor((timeLeft % 86400000) / 3600000);
+              const minutes = Math.floor((timeLeft % 3600000) / 60000);
+              const seconds = Math.floor((timeLeft % 60000) / 1000);
+              timerElement.innerText = `残り時間: ${days}日 ${hours}時間 ${minutes}分 ${seconds}秒`;
+            } else {
+              timerElement.innerText = "到着！（完了）";
+            }
+          }
+        }
+      }
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+    });
+  </script>
+</BaseLayout>
