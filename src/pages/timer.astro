@@ -55,7 +55,7 @@ const times = Array.from({ length: 4 }, (_, i) =>
               const seconds = Math.floor((timeLeft % 60000) / 1000);
               timerElement.innerText = `残り: ${days}日 ${hours}時間 ${minutes}分 ${seconds}秒`;
               timerElement.innerHTML += "<br>";
-              // 終了日時、日本時間で表示
+              // 帰還予定時刻を日本時間で表示
               timerElement.innerText += ` (帰還予定時刻: ${new Date(parseInt(time)).toLocaleString("ja-JP")})`;
             } else {
               timerElement.innerText = "到着！（完了）";
