@@ -7,8 +7,8 @@ const times = Array.from({ length: 4 }, (_, i) =>
 );
 ---
 
-<BaseLayout title="タイマー">
-  <h1>タイマー</h1>
+<BaseLayout title="サブマリンボイジャー運行状況">
+  <h1>サブマリンボイジャー運行状況</h1>
   <p>現在の時刻: {new Date().toLocaleString()}</p>
 
   {
@@ -19,6 +19,12 @@ const times = Array.from({ length: 4 }, (_, i) =>
       </p>
     ))
   }
+
+  <a
+    href="/"
+    onclick="event.preventDefault(); window.location.href = '/' + window.location.search;"
+    >再度タイマーを設定する</a
+  >
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -36,6 +42,8 @@ const times = Array.from({ length: 4 }, (_, i) =>
               const minutes = Math.floor((timeLeft % 3600000) / 60000);
               const seconds = Math.floor((timeLeft % 60000) / 1000);
               timerElement.innerText = `残り時間: ${days}日 ${hours}時間 ${minutes}分 ${seconds}秒`;
+              // 終了日時、日本時間で表示
+              timerElement.innerText += ` (終了日時: ${new Date(parseInt(time)).toLocaleString("ja-JP")})`;
             } else {
               timerElement.innerText = "到着！（完了）";
             }

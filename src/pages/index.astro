@@ -3,8 +3,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import TimerForm from "../components/TimerForm.astro";
 ---
 
-<BaseLayout title="潜水艦タイマー設定">
-  <h1>潜水艦タイマー設定</h1>
+<BaseLayout title="サブマリンボイジャー設定画面">
+  <h1>サブマリンボイジャー設定画面</h1>
   <div id="submarines">
     <TimerForm id={1} />
     <TimerForm id={2} />
@@ -12,7 +12,7 @@ import TimerForm from "../components/TimerForm.astro";
     <TimerForm id={4} />
   </div>
 
-  <button id="generate-url">URL生成</button>
+  <button id="generate-url">運行状況を表示</button>
   <p id="generated-url"></p>
 
   <script type="module">
@@ -29,9 +29,51 @@ import TimerForm from "../components/TimerForm.astro";
       return totalMilliseconds > 0 ? Date.now() + totalMilliseconds : null;
     }
 
+    function setFormValuesFromParams() {
+      const urlParams = new URLSearchParams(window.location.search);
+      for (let i = 1; i <= 4; i++) {
+        const time = urlParams.get(`time${i}`);
+        // パラメータがある場合はフォームにセット
+        if (time) {
+          const date = new Date(parseInt(time));
+          const now = Date.now();
+          const timeLeft = parseInt(time) - now;
+
+          if (timeLeft > 0) {
+            const days = Math.floor(timeLeft / 86400000);
+            const hours = Math.floor((timeLeft % 86400000) / 3600000);
+            const minutes = Math.floor((timeLeft % 3600000) / 60000);
+
+            document.getElementById(`days-${i}`).value = days;
+            document.getElementById(`hours-${i}`).value = hours;
+            document.getElementById(`minutes-${i}`).value = minutes;
+            document.querySelector(
+              `input[name="method${i}"][value="relative"]`
+            ).checked = true;
+            document.getElementById(`absolute-time-${i}`).value = date
+              .toISOString()
+              .slice(0, 16);
+          } else {
+            // パラメータが過去の日時だった場合はリセット
+            document.getElementById(`days-${i}`).value = "";
+            document.getElementById(`hours-${i}`).value = "";
+            document.getElementById(`minutes-${i}`).value = "";
+            document.querySelector(
+              `input[name="method${i}"][value="relative"]`
+            ).checked = true;
+            document.getElementById(`absolute-time-${i}`).value = "";
+          }
+        }
+      }
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
+      setFormValuesFromParams();
+
       document.getElementById("generate-url").addEventListener("click", () => {
         let params = [];
+        let hasInput = false;
+
         for (let i = 1; i <= 4; i++) {
           let method = document.querySelector(
             `input[name="method${i}"]:checked`
@@ -49,7 +91,7 @@ import TimerForm from "../components/TimerForm.astro";
             `absolute-time-${i}`
           )?.value;
 
-          let time = calculateTimestamp(
+          const timestamp = calculateTimestamp(
             method,
             days,
             hours,
@@ -57,17 +99,19 @@ import TimerForm from "../components/TimerForm.astro";
             absoluteTime
           );
 
-          if (time !== null) params.push(`time${i}=${time}`);
+          if (timestamp) {
+            params.push(`time${i}=${timestamp}`);
+            hasInput = true;
+          }
         }
 
-        if (params.length === 0) {
+        if (!hasInput) {
           alert("入力してください！");
           return;
         }
 
         let generatedURL = `/timer?${params.join("&")}`;
-        document.getElementById("generated-url").innerHTML =
-          `<a href="${generatedURL}">${generatedURL}</a>`;
+        window.location.href = generatedURL;
       });
     });
   </script>
