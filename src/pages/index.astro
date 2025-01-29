@@ -49,16 +49,19 @@ import TimerForm from "../components/TimerForm.astro";
             const days = Math.floor(timeLeft / 86400000);
             const hours = Math.floor((timeLeft % 86400000) / 3600000);
             const minutes = Math.floor((timeLeft % 3600000) / 60000);
-
             document.getElementById(`days-${i}`).value = days;
             document.getElementById(`hours-${i}`).value = hours;
             document.getElementById(`minutes-${i}`).value = minutes;
             document.querySelector(
               `input[name="method${i}"][value="relative"]`
             ).checked = true;
-            document.getElementById(`absolute-time-${i}`).value = date
+            // 日本のローカル時間に変換してdatetime-localフィールドに設定
+            const localDateTime = new Date(
+              date.getTime() - date.getTimezoneOffset() * 60000
+            )
               .toISOString()
               .slice(0, 16);
+            document.getElementById(`absolute-time-${i}`).value = localDateTime;
           } else {
             // パラメータが過去の日時だった場合はリセット
             document.getElementById(`days-${i}`).value = "";
