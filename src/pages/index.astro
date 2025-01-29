@@ -4,7 +4,11 @@ import TimerForm from "../components/TimerForm.astro";
 ---
 
 <BaseLayout title="サブマリンボイジャー設定画面">
-  <h1>サブマリンボイジャー設定画面</h1>
+  <h1>FF14 サブマリンボイジャー設定画面</h1>
+  <p>
+    4隻まで登録できます。「残り時間」か「終了日時」を選択・入力して、「運行状況を表示」を押してください。<br
+    />再設定の場合、時刻が過ぎている場合はリセットされています。
+  </p>
   <div id="submarines">
     <TimerForm id={1} />
     <TimerForm id={2} />
