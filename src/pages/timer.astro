@@ -11,7 +11,7 @@ const times = Array.from({ length: 4 }, (_, i) =>
   title="サブマリンボイジャー運行状況｜FF14 サブマリンボイジャー時間管理ツール"
 >
   <h1>FF14 サブマリンボイジャー運行状況</h1>
-  <p>現在の時刻: {new Date().toLocaleString("ja-JP")}</p>
+  <p>現在の時刻: {new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}</p>
 
   {
     times.map((time, index) => (
@@ -56,7 +56,7 @@ const times = Array.from({ length: 4 }, (_, i) =>
               timerElement.innerText = `残り時間: ${days}日 ${hours}時間 ${minutes}分 ${seconds}秒`;
               timerElement.innerHTML += "<br>";
               // 帰還予定時刻を日本時間で表示
-              timerElement.innerText += ` (帰還予定時刻: ${new Date(parseInt(time)).toLocaleString("ja-JP")})`;
+              timerElement.innerText += ` (帰還予定時刻: ${new Date(parseInt(time)).toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })})`;
             } else {
               timerElement.innerText = "探索完了！";
             }
