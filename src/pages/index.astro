@@ -18,9 +18,27 @@ import TimerForm from "../components/TimerForm.astro";
     <TimerForm id={4} />
   </div>
 
-  <button id="generate-url">運行状況を表示</button>
-  <p id="generated-url"></p>
+  <div class="button-box">
+    <button id="generate-url" class="button">運行状況を表示</button>
+  </div>
 
+  <style>
+    .button-box {
+      margin: 2rem 0;
+    }
+    .button {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.3rem;
+      cursor: pointer;
+      background-color: #fff;
+      transition: background-color 0.3s;
+      font-size: 1.5rem;
+    }
+    .button:hover {
+      background-color: #abecec;
+    }
+  </style>
   <script type="module">
     function calculateTimestamp(method, days, hours, minutes, absoluteTime) {
       if (method === "absolute") {
