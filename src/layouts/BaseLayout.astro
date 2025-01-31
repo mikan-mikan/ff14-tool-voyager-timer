@@ -1,5 +1,6 @@
 ---
 import "@fontsource/zen-kaku-gothic-new";
+import Footer from "../components/Footer.astro";
 const { title } = Astro.props;
 ---
 
@@ -14,11 +15,23 @@ const { title } = Astro.props;
     />
     <title>{title}</title>
     <link rel="icon" href="/favicon.ico" />
+    <script
+      type="text/partytown"
+      src="https://www.googletagmanager.com/gtag/js?id=G-JDR7J7W364"></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-JDR7J7W364");
+    </script>
   </head>
   <body>
     <div class="container">
       <slot />
     </div>
+    <Footer />
   </body>
 </html>
 
@@ -66,10 +79,29 @@ const { title } = Astro.props;
   #__next {
     isolation: isolate;
   }
+  /* ここまでリセットCSS */
+  :root {
+    --color-text: #4e4a4a;
+    --color-link: #30869e;
+    --color-white: #fff;
+    --color-lightgray: #c5c2c2;
+  }
+  a {
+    color: var(--color-link);
+    text-decoration: underline;
+  }
+  a:hover {
+    text-decoration: none;
+  }
   body {
     font-family: "Zen Kaku Gothic New", sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: var(--color-text);
   }
   .container {
+    flex: 1;
     margin: 0 auto;
     max-width: 50rem;
     width: 90%;

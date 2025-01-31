@@ -1,0 +1,36 @@
+---
+const today = new Date();
+---
+
+<footer class="footer">
+  <a href="/privacy/" class="link">プライバシーポリシー</a>
+  <p class="copy">&copy; {today.getFullYear()} kon-k.</p>
+</footer>
+
+<style>
+  .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0rem;
+    width: 100%;
+    padding: 1rem 1rem;
+    height: 4rem;
+    border-top: 2px solid var(--color-primary);
+  }
+  .link {
+    margin: 0;
+    color: var(--color-link);
+    text-decoration: underline;
+  }
+  @media (hover: hover) {
+    .link:hover {
+      text-decoration: none;
+    }
+  }
+  .copy {
+    margin: 0.5rem 0;
+    font-size: 0.8rem;
+  }
+</style>

@@ -25,6 +25,7 @@ const times = Array.from({ length: 4 }, (_, i) =>
   <a
     href="/"
     onclick="event.preventDefault(); window.location.href = '/' + window.location.search;"
+    class="link"
     >再度タイマーを設定する</a
   >
 
@@ -35,6 +36,15 @@ const times = Array.from({ length: 4 }, (_, i) =>
     }
     .data {
       margin-top: 5px;
+    }
+    .link {
+      color: var(--color-link);
+      text-decoration: underline;
+    }
+    @media (hover: hover) {
+      .link:hover {
+        text-decoration: none;
+      }
     }
   </style>
 

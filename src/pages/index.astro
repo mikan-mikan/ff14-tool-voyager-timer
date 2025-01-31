@@ -19,7 +19,7 @@ import TimerForm from "../components/TimerForm.astro";
   </div>
 
   <div class="button-box">
-    <button id="generate-url" class="button">運行状況を表示</button>
+    <button id="generate-url" class="button">運行状況表示ボタン</button>
   </div>
 
   <style>
@@ -28,15 +28,21 @@ import TimerForm from "../components/TimerForm.astro";
     }
     .button {
       margin-top: 1rem;
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 2rem;
       border-radius: 0.3rem;
       cursor: pointer;
-      background-color: #fff;
-      transition: background-color 0.3s;
-      font-size: 1.5rem;
+      background-color: var(--color-white);
+      border: 1px solid var(--color-text);
+      transition: all 0.1s ease-in-out;
+      font-size: 1.2rem;
     }
-    .button:hover {
-      background-color: #abecec;
+    @media (hover: hover) {
+      .button:hover,
+      .button:focus {
+        border: 1px solid var(--color-link);
+        background-color: var(--color-link);
+        color: var(--color-white);
+      }
     }
   </style>
   <script type="module">
