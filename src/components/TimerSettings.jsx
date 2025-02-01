@@ -15,7 +15,7 @@ function calculateTimestamp(method, days, hours, minutes, absoluteTime) {
 }
 
 const Container = styled.div`
-  /* 全体のレイアウトやマージンなど、必要に応じてスタイルを追加 */
+  padding-bottom: 4rem;
 `;
 
 const Header = styled.h1`
@@ -32,10 +32,38 @@ const ButtonBox = styled.div`
 
 const TimerSettings = () => {
   const [timers, setTimers] = useState([
-    { id: 1, method: "relative", days: "", hours: "", minutes: "", absoluteTime: "" },
-    { id: 2, method: "relative", days: "", hours: "", minutes: "", absoluteTime: "" },
-    { id: 3, method: "relative", days: "", hours: "", minutes: "", absoluteTime: "" },
-    { id: 4, method: "relative", days: "", hours: "", minutes: "", absoluteTime: "" },
+    {
+      id: 1,
+      method: "relative",
+      days: "",
+      hours: "",
+      minutes: "",
+      absoluteTime: "",
+    },
+    {
+      id: 2,
+      method: "relative",
+      days: "",
+      hours: "",
+      minutes: "",
+      absoluteTime: "",
+    },
+    {
+      id: 3,
+      method: "relative",
+      days: "",
+      hours: "",
+      minutes: "",
+      absoluteTime: "",
+    },
+    {
+      id: 4,
+      method: "relative",
+      days: "",
+      hours: "",
+      minutes: "",
+      absoluteTime: "",
+    },
   ]);
 
   // URL パラメータから初期値をセット

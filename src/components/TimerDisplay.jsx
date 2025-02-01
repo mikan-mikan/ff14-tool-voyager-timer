@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import Button from "./Button.jsx";
 
 const Container = styled.div`
-  /* 必要に応じて全体のコンテナスタイルを追加 */
+  padding-bottom: 4rem;
 `;
 
 const Header = styled.h1`
