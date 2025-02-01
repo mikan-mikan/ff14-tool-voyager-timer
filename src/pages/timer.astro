@@ -1,86 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-const urlParams = new URL(Astro.request.url).searchParams;
-const times = Array.from({ length: 4 }, (_, i) =>
-  urlParams.get(`time${i + 1}`)
-);
+import TimerDisplay from "../components/TimerDisplay.jsx";
 ---
 
 <BaseLayout
   title="サブマリンボイジャー運行状況｜FF14 サブマリンボイジャー時間管理ツール"
 >
-  <h1>FF14 サブマリンボイジャー運行状況</h1>
-  <p>現在の時刻: {new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}</p>
-
-  {
-    times.map((time, index) => (
-      <p class="title">
-        潜水艦{index + 1}
-      </p>
-      <p id={`timer${index + 1}`} class="data">データがありません。</p>
-    ))
-  }
-
-  <button onclick="window.location.href = '/' + window.location.search;
-  " class="button">時間を変更する</button>
-
-  <style>
-    .title {
-      font-weight: bold;
-      margin-bottom: 0;
-    }
-    .data {
-      margin-top: 5px;
-    }
-    .button {
-      margin-top: 1rem;
-      padding: 0.5rem 2rem;
-      border-radius: 0.3rem;
-      cursor: pointer;
-      background-color: var(--color-white);
-      border: 1px solid var(--color-text);
-      transition: all 0.1s ease-in-out;
-      font-size: 1.2rem;
-      color: var(--color-text);
-    }
-    @media (hover: hover) {
-      .button:hover,
-      .button:focus {
-        border: 1px solid var(--color-link);
-        background-color: var(--color-link);
-        color: var(--color-white);
-      }
-    }
-  </style>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      function updateCountdown() {
-        const urlParams = new URLSearchParams(window.location.search);
-        for (let i = 1; i <= 4; i++) {
-          const time = urlParams.get(`time${i}`);
-          const timerElement = document.getElementById(`timer${i}`);
-
-          if (time && timerElement) {
-            const timeLeft = parseInt(time) - Date.now();
-            if (timeLeft > 0) {
-              const days = Math.floor(timeLeft / 86400000);
-              const hours = Math.floor((timeLeft % 86400000) / 3600000);
-              const minutes = Math.floor((timeLeft % 3600000) / 60000);
-              const seconds = Math.floor((timeLeft % 60000) / 1000);
-              timerElement.innerText = `残り時間: ${days}日 ${hours}時間 ${minutes}分 ${seconds}秒`;
-              timerElement.innerHTML += "<br>";
-              // 帰還予定時刻を日本時間で表示
-              timerElement.innerText += ` (帰還予定時刻: ${new Date(parseInt(time)).toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })})`;
-            } else {
-              timerElement.innerText = "探索完了！";
-            }
-          }
-        }
-      }
-      setInterval(updateCountdown, 1000);
-      updateCountdown();
-    });
-  </script>
+  <TimerDisplay client:load />
 </BaseLayout>
