@@ -9,6 +9,10 @@ const CalendarField = styled.input`
   padding: 0.5rem;
   font-size: 1.3rem;
   width: auto;
+  transition: background-color 0.3s;
+  &:focus {
+    background-color: var(--color-lightblue);
+  }
 `;
 
 const CalendarInput = ({ id, absoluteTime, onUpdate }) => (

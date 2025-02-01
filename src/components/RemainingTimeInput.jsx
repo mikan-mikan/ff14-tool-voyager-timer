@@ -13,6 +13,10 @@ const InputField = styled.input`
   width: 3rem;
   padding: 0.5rem;
   font-size: 1.3rem;
+  transition: background-color 0.3s;
+  &:focus {
+    background-color: var(--color-lightblue);
+  }
 `;
 
 const RemainingTimeInput = ({ id, days, hours, minutes, onUpdate }) => (

@@ -15,6 +15,8 @@ const InputBoxes = styled.div`
 `;
 
 const RadioBox = styled.div`
+  display: flex;
+  gap: 1rem;
   font-size: 1.2rem;
   margin-top: 0.5rem;
 `;
