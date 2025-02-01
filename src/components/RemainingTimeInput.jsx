@@ -2,11 +2,12 @@ import React from "react";
 import styled from "@emotion/styled";
 
 const RemainingTimeContainer = styled.div`
-  padding: 0.5rem;
+  margin-top: 0.5rem;
+  display: flex;
+  gap: .5rem;
 `;
 
 const Label = styled.label`
-  margin-right: 1rem;
 `;
 
 const InputField = styled.input`
@@ -16,6 +17,9 @@ const InputField = styled.input`
   transition: background-color 0.3s;
   &:focus {
     background-color: var(--color-lightblue);
+  }
+  &::placeholder {
+    color: var(--color-lightgray);
   }
 `;
 

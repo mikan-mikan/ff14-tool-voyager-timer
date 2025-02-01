@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import TimerForm from "./TimerForm.jsx";
 import Button from "./Button.jsx";
+import StyledPageTitle from "./PageTitle.jsx";
 
 function calculateTimestamp(method, days, hours, minutes, absoluteTime) {
   if (method === "absolute") {
@@ -15,11 +16,6 @@ function calculateTimestamp(method, days, hours, minutes, absoluteTime) {
 }
 
 const Container = styled.div`
-  padding-bottom: 4rem;
-`;
-
-const Header = styled.h1`
-  margin-bottom: 1rem;
 `;
 
 const Info = styled.p`
@@ -134,7 +130,7 @@ const TimerSettings = () => {
 
   return (
     <Container>
-      <Header>FF14 サブマリンボイジャー設定画面</Header>
+      <StyledPageTitle>FF14 サブマリンボイジャー設定画面</StyledPageTitle>
       <Info>
         4隻まで登録できます。「残り時間」か「帰還予定時刻」を選択・入力して、「設定完了」を押してください。
         <br />

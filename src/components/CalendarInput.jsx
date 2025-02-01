@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 
 const CalendarContainer = styled.div`
-  padding: 0.5rem;
+  margin-top: 0.5rem;
 `;
 
 const CalendarField = styled.input`

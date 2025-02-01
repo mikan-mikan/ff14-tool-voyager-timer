@@ -104,6 +104,7 @@ const { title } = Astro.props;
     --color-white: #fff;
     --color-lightgray: #c5c2c2;
     --color-lightblue: #f2f6f7;
+    --color-bg: #d5e8ef;
   }
   a {
     color: var(--color-link);
@@ -122,7 +123,12 @@ const { title } = Astro.props;
   .container {
     flex: 1;
     margin: 0 auto;
+    padding: 2rem 2rem 4rem 2rem;
     max-width: 50rem;
     width: 90%;
+    border: 1px solid var(--color-text);
+    @media screen and (max-width: 600px) {
+      padding: 1rem 1rem 2rem;
+    }
   }
 </style>

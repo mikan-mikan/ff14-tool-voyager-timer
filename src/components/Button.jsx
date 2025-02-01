@@ -18,6 +18,11 @@ const StyledButton = styled.button`
       color: var(--color-white);
     }
   }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+
 `;
 
 const Button = ({ children, onClick, className }) => {

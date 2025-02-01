@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import Button from "./Button.jsx";
+import StyledPageTitle from "./PageTitle.jsx";
 
 const Container = styled.div`
-  padding-bottom: 4rem;
-`;
-
-const Header = styled.h1`
-  margin-bottom: 1rem;
 `;
 
 const TimerTitle = styled.p`
@@ -41,7 +37,7 @@ const TimerDisplay = () => {
 
   return (
     <Container>
-      <Header>FF14 サブマリンボイジャー運行状況</Header>
+      <StyledPageTitle>FF14 サブマリンボイジャー運行状況</StyledPageTitle>
       <p>
         現在の時刻:{" "}
         {new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}
