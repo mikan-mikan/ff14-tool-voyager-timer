@@ -5,7 +5,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 <BaseLayout title="Privacy Policy | FF14 サブマリンボイジャー時間管理ツール">
   <main>
     <div class="container">
-      <h1>プライバシーポリシー</h1>
+      <h1 class="title">プライバシーポリシー</h1>
 
       <p>当サイトは、「Googleアナリティクス」を使用しています。</p>
       <p>データの収集のためにCookieを使用しています。</p>
@@ -35,11 +35,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   </main>
 </BaseLayout>
 
-<style>
+<style scoped>
   .container {
     margin: auto;
     font-size: 1rem;
     line-height: 1.6;
+  }
+  .title {
+    font-size: 2rem;
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
+    }
   }
   .link {
     color: var(--color-link);
