@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import "@fontsource/zen-kaku-gothic-new";
 
 const StyledButton = styled.button`
   margin-top: 1rem;
@@ -9,6 +10,7 @@ const StyledButton = styled.button`
   border: 1px solid var(--color-text);
   transition: all 0.1s ease-in-out;
   font-size: 1.2rem;
+  font-family: "Zen Kaku Gothic New";
   color: var(--color-text);
 
   @media (hover: hover) {
