@@ -16,7 +16,7 @@ const InputBoxes = styled.div`
 
 const RadioBox = styled.div`
   font-size: 1.2rem;
-  margin-bottom: 1rem;
+  margin-top: 0.5rem;
 `;
 
 const TimerForm = ({ timer, onUpdate }) => {

@@ -10,7 +10,6 @@ const Label = styled.label`
 `;
 
 const InputField = styled.input`
-  margin-top: 0.5rem;
   width: 3rem;
   padding: 0.5rem;
   font-size: 1.3rem;
