@@ -8,7 +8,7 @@ import TimerForm from "../components/TimerForm.astro";
 >
   <h1>FF14 サブマリンボイジャー設定画面</h1>
   <p>
-    4隻まで登録できます。「残り時間」か「帰還予定時刻」を選択・入力して、「運行状況を表示」を押してください。<br
+    4隻まで登録できます。「残り時間」か「帰還予定時刻」を選択・入力して、「設定完了」を押してください。<br
     />再設定の場合、時刻が過ぎている場合はリセットされています。
   </p>
   <div id="submarines">
@@ -19,7 +19,7 @@ import TimerForm from "../components/TimerForm.astro";
   </div>
 
   <div class="button-box">
-    <button id="generate-url" class="button">運行状況表示ボタン</button>
+    <button id="generate-url" class="button">設定完了</button>
   </div>
 
   <style>
@@ -35,6 +35,7 @@ import TimerForm from "../components/TimerForm.astro";
       border: 1px solid var(--color-text);
       transition: all 0.1s ease-in-out;
       font-size: 1.2rem;
+      color: var(--color-text);
     }
     @media (hover: hover) {
       .button:hover,

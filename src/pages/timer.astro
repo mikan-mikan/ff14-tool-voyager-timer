@@ -22,12 +22,8 @@ const times = Array.from({ length: 4 }, (_, i) =>
     ))
   }
 
-  <a
-    href="/"
-    onclick="event.preventDefault(); window.location.href = '/' + window.location.search;"
-    class="link"
-    >再度タイマーを設定する</a
-  >
+  <button onclick="window.location.href = '/' + window.location.search;
+  " class="button">時間を変更する</button>
 
   <style>
     .title {
@@ -37,13 +33,23 @@ const times = Array.from({ length: 4 }, (_, i) =>
     .data {
       margin-top: 5px;
     }
-    .link {
-      color: var(--color-link);
-      text-decoration: underline;
+    .button {
+      margin-top: 1rem;
+      padding: 0.5rem 2rem;
+      border-radius: 0.3rem;
+      cursor: pointer;
+      background-color: var(--color-white);
+      border: 1px solid var(--color-text);
+      transition: all 0.1s ease-in-out;
+      font-size: 1.2rem;
+      color: var(--color-text);
     }
     @media (hover: hover) {
-      .link:hover {
-        text-decoration: none;
+      .button:hover,
+      .button:focus {
+        border: 1px solid var(--color-link);
+        background-color: var(--color-link);
+        color: var(--color-white);
       }
     }
   </style>
