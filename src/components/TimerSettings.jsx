@@ -130,7 +130,7 @@ const TimerSettings = () => {
 
   return (
     <Container>
-      <StyledPageTitle>FF14 サブマリンボイジャー設定画面</StyledPageTitle>
+      <StyledPageTitle>FF14 サブマリンボイジャー時間設定画面</StyledPageTitle>
       <Info>
         4隻まで登録できます。「残り時間」か「帰還予定時刻」を選択・入力して、「設定完了」を押してください。
         <br />

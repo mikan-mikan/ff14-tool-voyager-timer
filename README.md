@@ -1,4 +1,4 @@
-# FF14 サブマリンボイジャー時間管理
+# FF14 サブマリンボイジャー残り時間表示ツール
 
 https://ff14-voyager-timer.vercel.app/
 
