@@ -9,6 +9,7 @@ const PrivacyPolicy = () => {
   return (
     <div>
       <StyledPageTitle>プライバシーポリシー</StyledPageTitle>
+      <p>記載されている会社名・製品名・システム名などは各社の商標、または登録商標です。</p>
 
       <p>当サイトは、「Googleアナリティクス」を使用しています。</p>
       <p>データの収集のためにCookieを使用しています。</p>

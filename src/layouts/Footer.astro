@@ -4,19 +4,33 @@ const today = new Date();
 ---
 
 <footer class="footer">
-  <PrivacyLink client:only />
-  <p class="copy">&copy; {today.getFullYear()} kon-k.</p>
+  <div class="footer__inner">
+    <PrivacyLink client:only />
+    <p class="lead">
+      記載されている会社名・製品名・システム名などは、各社の商標、または登録商標です。
+    </p>
+    <p class="copy">&copy; {today.getFullYear()} kon-k.</p>
+  </div>
 </footer>
 
 <style>
   .footer {
+    width: 100%;
+  }
+  .footer__inner {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
     padding: 1rem 0;
-    border-top: 2px solid var(--color-primary);
+    width: 90%;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+  .lead {
+    margin: 0.3rem 0 0;
+    font-size: 0.8rem;
+    text-align: center;
   }
   .copy {
     margin: 0.5rem 0;
