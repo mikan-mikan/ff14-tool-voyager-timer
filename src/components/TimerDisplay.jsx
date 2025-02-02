@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import Button from "./Button.jsx";
-import StyledPageTitle from "./PageTitle.jsx";
+import PageTitle from "./PageTitle.jsx";
+import ButtonWrap from "./ButtonWrap.jsx";
 
-const Container = styled.div`
+const StyledContainer = styled.div`
 `;
 
-const TimerTitle = styled.p`
+const StyledTimerTitle = styled.p`
   font-weight: bold;
   margin-bottom: 0;
 `;
 
-const TimerData = styled.p`
+const StyledTimerData = styled.p`
   margin-top: 5px;
 `;
 
 const TimerDisplay = () => {
   const [timers, setTimers] = useState([]);
-  const [now, setNow] = useState(Date.now());
+  const [now, setNow] = useState(null);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -29,18 +30,31 @@ const TimerDisplay = () => {
   }, []);
 
   useEffect(() => {
+    setNow(Date.now());
     const interval = setInterval(() => {
       setNow(Date.now());
     }, 1000);
     return () => clearInterval(interval);
   }, []);
 
+  const goToSetTime = () => {
+    window.location.href = "/" + window.location.search;
+  };
+
+  const urlCopy = () => {
+    const url = window.location.href;
+    navigator.clipboard.writeText(url);
+    alert("URLをコピーしました！");
+  };
+
   return (
-    <Container>
-      <StyledPageTitle>FF14 サブマリンボイジャー運行状況</StyledPageTitle>
+    <StyledContainer>
+      <PageTitle>FF14 サブマリンボイジャー運行状況</PageTitle>
       <p>
         現在の時刻:{" "}
-        {new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}
+        {now
+          ? new Date(now).toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })
+          : "Loading..."}
       </p>
       <div>
         {timers.map((time, index) => {
@@ -48,13 +62,14 @@ const TimerDisplay = () => {
           if (!time) {
             return (
               <div key={id}>
-                <TimerTitle>潜水艦{id}</TimerTitle>
-                <TimerData id={`timer${id}`}>データがありません。</TimerData>
+                <StyledTimerTitle>潜水艦{id}</StyledTimerTitle>
+                <StyledTimerData id={`timer${id}`}>データがありません。</StyledTimerData>
               </div>
             );
           }
           const timestamp = parseInt(time);
-          const timeLeft = timestamp - now;
+          const currentNow = now || 0;
+          const timeLeft = timestamp - currentNow;
           if (timeLeft > 0) {
             const days = Math.floor(timeLeft / 86400000);
             const hours = Math.floor((timeLeft % 86400000) / 3600000);
@@ -62,8 +77,8 @@ const TimerDisplay = () => {
             const seconds = Math.floor((timeLeft % 60000) / 1000);
             return (
               <div key={id}>
-                <TimerTitle>潜水艦{id}</TimerTitle>
-                <TimerData id={`timer${id}`}>
+                <StyledTimerTitle>潜水艦{id}</StyledTimerTitle>
+                <StyledTimerData id={`timer${id}`}>
                   残り時間: {days}日 {hours}時間 {minutes}分 {seconds}秒
                   <br />
                   (帰還予定時刻:{" "}
@@ -71,27 +86,28 @@ const TimerDisplay = () => {
                     timeZone: "Asia/Tokyo",
                   })}
                   )
-                </TimerData>
+                </StyledTimerData>
               </div>
             );
           } else {
             return (
               <div key={id}>
-                <TimerTitle>潜水艦{id}</TimerTitle>
-                <TimerData id={`timer${id}`}>探索完了！</TimerData>
+                <StyledTimerTitle>潜水艦{id}</StyledTimerTitle>
+                <StyledTimerData id={`timer${id}`}>探索完了！</StyledTimerData>
               </div>
             );
           }
         })}
       </div>
-      <Button
-        onClick={() => {
-          window.location.href = "/" + window.location.search;
-        }}
-      >
-        時間を変更する
-      </Button>
-    </Container>
+      <ButtonWrap>
+        <Button onClick={goToSetTime}>
+          時間を変更する
+        </Button>
+        <Button onClick={urlCopy}>
+          URLをコピーする
+        </Button>
+      </ButtonWrap>
+    </StyledContainer>
   );
 };
 
