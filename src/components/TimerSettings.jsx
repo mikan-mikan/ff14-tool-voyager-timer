@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import TimerForm from "./TimerForm.jsx";
 import Button from "./Button.jsx";
-import StyledPageTitle from "./PageTitle.jsx";
+import PageTitle from "./PageTitle.jsx";
+import ButtonWrap from "./ButtonWrap.jsx";
 
 function calculateTimestamp(method, days, hours, minutes, absoluteTime) {
   if (method === "absolute") {
@@ -15,15 +16,11 @@ function calculateTimestamp(method, days, hours, minutes, absoluteTime) {
   return totalMilliseconds > 0 ? Date.now() + totalMilliseconds : null;
 }
 
-const Container = styled.div`
+const StyledContainer = styled.div`
 `;
 
-const Info = styled.p`
+const StyledInfo = styled.p`
   margin-bottom: 1rem;
-`;
-
-const ButtonBox = styled.div`
-  margin-top: 20px;
 `;
 
 const TimerSettings = () => {
@@ -129,13 +126,13 @@ const TimerSettings = () => {
   };
 
   return (
-    <Container>
-      <StyledPageTitle>FF14 サブマリンボイジャー時間設定画面</StyledPageTitle>
-      <Info>
+    <StyledContainer>
+      <PageTitle>FF14 サブマリンボイジャー時間設定画面</PageTitle>
+      <StyledInfo>
         4隻まで登録できます。「残り時間」か「帰還予定時刻」を選択・入力して、「設定完了」を押してください。
         <br />
         再設定の場合、時刻が過ぎている場合はリセットされています。
-      </Info>
+      </StyledInfo>
       <div id="submarines">
         {timers.map((timer) => (
           <TimerForm
@@ -147,12 +144,12 @@ const TimerSettings = () => {
           />
         ))}
       </div>
-      <ButtonBox>
+      <ButtonWrap>
         <Button onClick={handleSubmit}>
           設定完了
         </Button>
-      </ButtonBox>
-    </Container>
+      </ButtonWrap>
+    </StyledContainer>
   );
 };
 

@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-const CalendarContainer = styled.div`
+const StyledCalendarContainer = styled.div`
   margin-top: 0.5rem;
 `;
 
-const CalendarField = styled.input`
+const StyledCalendarField = styled.input`
   padding: 0.5rem;
   font-size: 1.3rem;
   width: auto;
@@ -16,13 +16,13 @@ const CalendarField = styled.input`
 `;
 
 const CalendarInput = ({ id, absoluteTime, onUpdate }) => (
-  <CalendarContainer id={`calendar-input-${id}`}>
-    <CalendarField
+  <StyledCalendarContainer id={`calendar-input-${id}`}>
+    <StyledCalendarField
       type="datetime-local"
       value={absoluteTime}
       onChange={(e) => onUpdate("absoluteTime", e.target.value)}
     />
-  </CalendarContainer>
+  </StyledCalendarContainer>
 );
 
 export default CalendarInput;

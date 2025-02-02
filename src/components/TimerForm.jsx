@@ -3,18 +3,18 @@ import styled from "@emotion/styled";
 import RemainingTimeInput from "./RemainingTimeInput.jsx";
 import CalendarInput from "./CalendarInput.jsx";
 
-const Title = styled.h2`
+const StyledTitle = styled.h2`
   margin-top: 2rem;
   margin-bottom: 0.5rem;
   font-size: 1.3rem;
   font-weight: bold;
 `;
 
-const InputBoxes = styled.div`
+const StyledInputBoxes = styled.div`
   padding-left: 0.5rem;
 `;
 
-const RadioBox = styled.div`
+const StyledRadioBox = styled.div`
   display: flex;
   gap: 1rem;
   font-size: 1.2rem;
@@ -25,9 +25,9 @@ const TimerForm = ({ timer, onUpdate }) => {
   const { id, method, days, hours, minutes, absoluteTime } = timer;
   return (
     <div>
-      <Title>潜水艦{id}</Title>
-      <InputBoxes>
-        <RadioBox>
+      <StyledTitle>潜水艦{id}</StyledTitle>
+      <StyledInputBoxes>
+        <StyledRadioBox>
           <label>
             <input
               type="radio"
@@ -48,7 +48,7 @@ const TimerForm = ({ timer, onUpdate }) => {
             />
             帰還予定時刻
           </label>
-        </RadioBox>
+        </StyledRadioBox>
         {method === "relative" ? (
           <RemainingTimeInput
             id={id}
@@ -64,7 +64,7 @@ const TimerForm = ({ timer, onUpdate }) => {
             onUpdate={onUpdate}
           />
         )}
-      </InputBoxes>
+      </StyledInputBoxes>
     </div>
   );
 };

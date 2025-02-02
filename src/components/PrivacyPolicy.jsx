@@ -1,6 +1,6 @@
 import React from "react";
 // import styled from "@emotion/styled";
-import StyledPageTitle from "./PageTitle.jsx";
+import PageTitle from "./PageTitle.jsx";
 import Link from "./Link.jsx";
 
 const PrivacyPolicy = () => {
@@ -8,7 +8,7 @@ const PrivacyPolicy = () => {
   const urlParams = `?${params.toString()}`;
   return (
     <div>
-      <StyledPageTitle>プライバシーポリシー</StyledPageTitle>
+      <PageTitle>プライバシーポリシー</PageTitle>
       <p>記載されている会社名・製品名・システム名などは各社の商標、または登録商標です。</p>
 
       <p>当サイトは、「Googleアナリティクス」を使用しています。</p>
