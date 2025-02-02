@@ -1,59 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PrivacyPolicy from "../components/PrivacyPolicy.jsx";
 ---
 
 <BaseLayout
   title="Privacy Policy | FF14 サブマリンボイジャー残り時間表示ツール"
 >
-  <main>
-    <div class="container">
-      <h1 class="title">プライバシーポリシー</h1>
-
-      <p>当サイトは、「Googleアナリティクス」を使用しています。</p>
-      <p>データの収集のためにCookieを使用しています。</p>
-      <p>
-        このデータは匿名で収集されており、個人を特定するものではありません。
-      </p>
-      <p>
-        この機能はCookieを無効にすることで収集を拒否することが出来ますので、お使いのブラウザの設定をご確認ください。
-      </p>
-      <br />
-      <p>この規約に関しての詳細は以下をご参照ください。</p>
-      <div>
-        ● <a
-          href="https://policies.google.com/technologies/partner-sites?hl=ja"
-          target="_blank"
-          rel="noreferrer"
-          class="link">Googleポリシーと規約</a
-        >
-      </div>
-      <p>
-        当サイトからリンクやバナーなどによって他のサイトに移動された場合、移動先サイトで提供される情報、サービス等について一切の責任を負いません。
-      </p>
-
-      <br />
-      <a href="/" class="link">TOPへ戻る</a>
-    </div>
-  </main>
+  <PrivacyPolicy client:only />
 </BaseLayout>
-
-<style scoped>
-  .container {
-    margin: auto;
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-  .title {
-    font-size: 2rem;
-    @media (max-width: 768px) {
-      font-size: 1.5rem;
-    }
-  }
-  .link {
-    color: var(--color-link);
-    text-decoration: underline;
-  }
-  .link:hover {
-    text-decoration: none;
-  }
-</style>

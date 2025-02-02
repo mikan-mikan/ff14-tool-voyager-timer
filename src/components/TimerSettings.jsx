@@ -148,7 +148,7 @@ const TimerSettings = () => {
         ))}
       </div>
       <ButtonBox>
-        <Button onClick={handleSubmit} className="button">
+        <Button onClick={handleSubmit}>
           設定完了
         </Button>
       </ButtonBox>

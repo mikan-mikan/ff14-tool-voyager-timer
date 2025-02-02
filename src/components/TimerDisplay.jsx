@@ -85,11 +85,9 @@ const TimerDisplay = () => {
         })}
       </div>
       <Button
-        // client:only は Astro 側のディレクティブなので、Astro ファイル側で設定してください
         onClick={() => {
           window.location.href = "/" + window.location.search;
         }}
-        className="button"
       >
         時間を変更する
       </Button>

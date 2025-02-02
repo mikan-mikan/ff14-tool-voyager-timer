@@ -1,9 +1,10 @@
 ---
+import PrivacyLink from "../components/PrivacyPolicyLink.jsx";
 const today = new Date();
 ---
 
 <footer class="footer">
-  <a href="/privacy/" class="link">プライバシーポリシー</a>
+  <PrivacyLink client:only />
   <p class="copy">&copy; {today.getFullYear()} kon-k.</p>
 </footer>
 
@@ -16,16 +17,6 @@ const today = new Date();
     width: 100%;
     padding: 1rem 0;
     border-top: 2px solid var(--color-primary);
-  }
-  .link {
-    margin: 0;
-    color: var(--color-link);
-    text-decoration: underline;
-  }
-  @media (hover: hover) {
-    .link:hover {
-      text-decoration: none;
-    }
   }
   .copy {
     margin: 0.5rem 0;
