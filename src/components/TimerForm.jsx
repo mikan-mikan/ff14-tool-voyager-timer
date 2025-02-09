@@ -17,8 +17,20 @@ const StyledInputBoxes = styled.div`
 const StyledRadioBox = styled.div`
   display: flex;
   gap: 1rem;
-  font-size: 1.2rem;
   margin-top: 0.5rem;
+`;
+const StyledLabel = styled.label`
+  font-size: 1rem;
+  transition: color 0.2s;
+  &:has(input:checked) {
+    font-weight: bold;
+  }
+  @media (hover: hover) {
+    &:hover {
+      cursor: pointer;
+      color: var(--color-link);
+    }
+  }
 `;
 
 const TimerForm = ({ timer, onUpdate }) => {
@@ -28,7 +40,7 @@ const TimerForm = ({ timer, onUpdate }) => {
       <StyledTitle>潜水艦{id}</StyledTitle>
       <StyledInputBoxes>
         <StyledRadioBox>
-          <label>
+          <StyledLabel>
             <input
               type="radio"
               name={`method${id}`}
@@ -37,8 +49,8 @@ const TimerForm = ({ timer, onUpdate }) => {
               onChange={() => onUpdate("method", "relative")}
             />
             残り時間
-          </label>
-          <label>
+          </StyledLabel>
+          <StyledLabel>
             <input
               type="radio"
               name={`method${id}`}
@@ -47,7 +59,7 @@ const TimerForm = ({ timer, onUpdate }) => {
               onChange={() => onUpdate("method", "absolute")}
             />
             帰還予定時刻
-          </label>
+          </StyledLabel>
         </StyledRadioBox>
         {method === "relative" ? (
           <RemainingTimeInput
