@@ -1,6 +1,7 @@
 ---
 import "@fontsource/zen-kaku-gothic-new";
 import Footer from "./Footer.astro";
+import Header from "./Header.astro";
 const { title } = Astro.props;
 ---
 
@@ -47,6 +48,7 @@ const { title } = Astro.props;
     </script>
   </head>
   <body>
+    <Header />
     <main class="main">
       <slot />
     </main>
