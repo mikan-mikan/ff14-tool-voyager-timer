@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import "@fontsource/zen-kaku-gothic-new";
 
 const StyledButton = styled.button`
-  padding: 0.5rem 2rem;
+  padding: 0.6rem 2rem;
   cursor: pointer;
   background-color: var(--color-white);
   border: 1px solid var(--color-text);

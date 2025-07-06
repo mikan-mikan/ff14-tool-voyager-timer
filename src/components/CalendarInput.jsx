@@ -13,6 +13,9 @@ const StyledCalendarField = styled.input`
   &:focus {
     background-color: var(--color-lightblue);
   }
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const CalendarInput = ({ id, absoluteTime, onUpdate }) => (

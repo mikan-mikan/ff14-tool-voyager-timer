@@ -3,8 +3,9 @@ import styled from "@emotion/styled";
 
 const StyledPageTitle = styled.h1`
   font-size: 2rem;
+  margin: 0;
   @media (max-width: 768px) {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
 `;
 

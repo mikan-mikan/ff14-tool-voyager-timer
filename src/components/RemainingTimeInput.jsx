@@ -8,6 +8,9 @@ const StyledContainer = styled.div`
 `;
 
 const StyledLabel = styled.label`
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
 `;
 
 const StyledInputField = styled.input`
@@ -20,6 +23,10 @@ const StyledInputField = styled.input`
   }
   &::placeholder {
     color: var(--color-lightgray);
+  }
+  @media (max-width: 768px) {
+    width: 2.5rem;
+    font-size: 1.1rem;
   }
 `;
 

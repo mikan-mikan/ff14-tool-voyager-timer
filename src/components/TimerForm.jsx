@@ -6,8 +6,11 @@ import CalendarInput from "./CalendarInput.jsx";
 const StyledTitle = styled.h2`
   margin-top: 2rem;
   margin-bottom: 0.5rem;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: bold;
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const StyledInputBoxes = styled.div`

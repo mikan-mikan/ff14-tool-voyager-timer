@@ -21,6 +21,9 @@ const StyledContainer = styled.div`
 
 const StyledInfo = styled.p`
   margin-bottom: 1rem;
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const TimerSettings = () => {
