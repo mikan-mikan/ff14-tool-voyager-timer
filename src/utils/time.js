@@ -15,6 +15,7 @@ export function millisecondsToTimeParts(ms) {
   const hours = Math.floor((ms % MS_PER_DAY) / MS_PER_HOUR);
   const minutes = Math.floor((ms % MS_PER_HOUR) / MS_PER_MINUTE);
   const seconds = Math.floor((ms % MS_PER_MINUTE) / MS_PER_SECOND);
+  return { days, hours, minutes, seconds };
 }
 
 /**
