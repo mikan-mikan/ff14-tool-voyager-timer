@@ -4,6 +4,7 @@ import TimerForm from "./TimerForm.jsx";
 import Button from "./Button.jsx";
 import PageTitle from "./PageTitle.jsx";
 import ButtonWrap from "./ButtonWrap.jsx";
+import { millisecondsToTimeParts, formatDateTimeLocal } from "../utils/time";
 
 function calculateTimestamp(method, days, hours, minutes, absoluteTime) {
   if (method === "absolute") {
@@ -72,15 +73,9 @@ const TimerSettings = () => {
         const now = Date.now();
         const timeLeft = timestamp - now;
         if (timeLeft > 0) {
-          const days = Math.floor(timeLeft / 86400000);
-          const hours = Math.floor((timeLeft % 86400000) / 3600000);
-          const minutes = Math.floor((timeLeft % 3600000) / 60000);
+          const { days, hours, minutes } = millisecondsToTimeParts(timeLeft);
           // 入力用にローカル日時（datetime-local 用）に変換
-          const localDateTime = new Date(
-            timestamp - new Date().getTimezoneOffset() * 60000
-          )
-            .toISOString()
-            .slice(0, 16);
+          const localDateTime = formatDateTimeLocal(new Date(timestamp));
           return {
             ...timer,
             method: "relative",
