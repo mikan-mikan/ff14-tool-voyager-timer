@@ -34,10 +34,9 @@ const StyledInfo = styled.p`
 
 type TimerFormField = keyof Timer;
 
-type TimerState = Timer & { id: number };
 
 const TimerSettings: React.FC = () => {
-  const [timers, setTimers] = useState<TimerState[]>([
+  const [timers, setTimers] = useState<Timer[]>([
     { id: 1, method: "relative", days: "", hours: "", minutes: "", absoluteTime: "" },
     { id: 2, method: "relative", days: "", hours: "", minutes: "", absoluteTime: "" },
     { id: 3, method: "relative", days: "", hours: "", minutes: "", absoluteTime: "" },
@@ -67,7 +66,7 @@ const TimerSettings: React.FC = () => {
       }
       return timer;
     });
-    setTimers(newTimers as TimerState[]);
+    setTimers(newTimers as Timer[]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
