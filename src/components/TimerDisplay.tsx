@@ -5,7 +5,6 @@ import PageTitle from "./PageTitle";
 import ButtonWrap from "./ButtonWrap";
 import { millisecondsToTimeParts } from "../utils/time";
 
-const StyledContainer = styled.div``;
 const StyledTimerTitle = styled.p`
   font-weight: bold;
   margin-bottom: 0;
@@ -46,7 +45,7 @@ const TimerDisplay: React.FC = () => {
   };
 
   return (
-    <StyledContainer>
+    <div>
       <PageTitle>FF14 サブマリンボイジャー運行状況</PageTitle>
       <p>
         現在の時刻:{" "}
@@ -102,7 +101,7 @@ const TimerDisplay: React.FC = () => {
           URLをコピーする
         </Button>
       </ButtonWrap>
-    </StyledContainer>
+    </div>
   );
 };
 

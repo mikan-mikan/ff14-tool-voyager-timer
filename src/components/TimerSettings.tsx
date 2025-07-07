@@ -24,7 +24,6 @@ function calculateTimestamp(
   return totalMilliseconds > 0 ? Date.now() + totalMilliseconds : null;
 }
 
-const StyledContainer = styled.div``;
 const StyledInfo = styled.p`
   margin-bottom: 1rem;
   @media (max-width: 768px) {
@@ -102,7 +101,7 @@ const TimerSettings: React.FC = () => {
   };
 
   return (
-    <StyledContainer>
+    <div>
       <PageTitle>FF14 サブマリンボイジャー時間設定画面</PageTitle>
       <StyledInfo>
         4隻まで登録できます。「残り時間」か「帰還予定時刻」を選択・入力して、「設定完了」を押してください。
@@ -125,7 +124,7 @@ const TimerSettings: React.FC = () => {
           設定完了
         </Button>
       </ButtonWrap>
-    </StyledContainer>
+    </div>
   );
 };
 
