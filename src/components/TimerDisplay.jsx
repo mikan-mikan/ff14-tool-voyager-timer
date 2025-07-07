@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import Button from "./Button.jsx";
 import PageTitle from "./PageTitle.jsx";
 import ButtonWrap from "./ButtonWrap.jsx";
+import { millisecondsToTimeParts } from "../utils/time";
 
 const StyledContainer = styled.div`
 `;
@@ -71,10 +72,7 @@ const TimerDisplay = () => {
           const currentNow = now || 0;
           const timeLeft = timestamp - currentNow;
           if (timeLeft > 0) {
-            const days = Math.floor(timeLeft / 86400000);
-            const hours = Math.floor((timeLeft % 86400000) / 3600000);
-            const minutes = Math.floor((timeLeft % 3600000) / 60000);
-            const seconds = Math.floor((timeLeft % 60000) / 1000);
+            const { days, hours, minutes, seconds } = millisecondsToTimeParts(timeLeft);
             return (
               <div key={id}>
                 <StyledTimerTitle>潜水艦{id}</StyledTimerTitle>
