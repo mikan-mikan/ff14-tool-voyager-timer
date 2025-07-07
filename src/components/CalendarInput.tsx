@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import type { CalendarInputProps } from "../types/CalendarInputProps";
+import type { CalendarInputProps } from "../types/TimerTypes";
 
 const StyledCalendarContainer = styled.div`
   margin-top: 0.5rem;

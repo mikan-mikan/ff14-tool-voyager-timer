@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import type { RemainingTimeInputProps } from "../types/RemainingTimeInputProps";
+import type { RemainingTimeInputProps } from "../types/TimerTypes";
 
 const StyledContainer = styled.div`
   margin-top: 0.5rem;
