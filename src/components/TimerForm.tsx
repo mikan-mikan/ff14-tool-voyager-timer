@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
-import RemainingTimeInput from "./RemainingTimeInput.jsx";
-import CalendarInput from "./CalendarInput.jsx";
+import RemainingTimeInput from "./RemainingTimeInput";
+import CalendarInput from "./CalendarInput";
+import type { TimerFormProps } from "../types/TimerTypes";
 
 const StyledTitle = styled.h2`
   margin-top: 2rem;
@@ -36,7 +37,7 @@ const StyledLabel = styled.label`
   }
 `;
 
-const TimerForm = ({ timer, onUpdate }) => {
+const TimerForm = ({ timer, onUpdate }: TimerFormProps) => {
   const { id, method, days, hours, minutes, absoluteTime } = timer;
   return (
     <div>

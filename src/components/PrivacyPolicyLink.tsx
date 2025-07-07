@@ -1,6 +1,5 @@
 import React from "react";
-// import styled from "@emotion/styled";
-import Link from "./Link.jsx";
+import Link from "./Link";
 
 const PrivacyPolicyLink = () => {
   const params = new URLSearchParams(window.location.search);
@@ -8,6 +7,6 @@ const PrivacyPolicyLink = () => {
   return (
     <Link href={`/privacy/${urlParams}`}>プライバシーポリシー</Link>
   );
-}
+};
 
 export default PrivacyPolicyLink;

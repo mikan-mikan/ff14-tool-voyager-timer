@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import "@fontsource/zen-kaku-gothic-new";
+import type { LinkProps } from "../types/LinkProps";
 
 const StyledLink = styled.a`
   color: var(--color-link);
@@ -13,7 +14,7 @@ const StyledLink = styled.a`
   }
 `;
 
-const Link = ({ children, target = '_self', href, ...props}) => {
+const Link = ({ children, target = '_self', href, ...props }: LinkProps) => {
   return (
     <StyledLink href={href} target={target} {...props}>
       {children}

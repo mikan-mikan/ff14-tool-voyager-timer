@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import "@fontsource/zen-kaku-gothic-new";
+import type { WithChildren } from "../types/Common";
 
 const StyledButtonWrap = styled.div`
   display: flex;
@@ -11,12 +12,8 @@ const StyledButtonWrap = styled.div`
   align-items: center;
 `;
 
-const ButtonWrap = ({ children }) => {
-  return (
-    <StyledButtonWrap>
-      {children}
-    </StyledButtonWrap>
-  );
+const ButtonWrap = ({ children }: WithChildren) => {
+  return <StyledButtonWrap>{children}</StyledButtonWrap>;
 };
 
 export default ButtonWrap;

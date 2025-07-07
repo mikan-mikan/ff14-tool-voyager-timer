@@ -1,29 +1,26 @@
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
-import Button from "./Button.jsx";
-import PageTitle from "./PageTitle.jsx";
-import ButtonWrap from "./ButtonWrap.jsx";
+import Button from "./Button";
+import PageTitle from "./PageTitle";
+import ButtonWrap from "./ButtonWrap";
 import { millisecondsToTimeParts } from "../utils/time";
 
-const StyledContainer = styled.div`
-`;
-
+const StyledContainer = styled.div``;
 const StyledTimerTitle = styled.p`
   font-weight: bold;
   margin-bottom: 0;
 `;
-
 const StyledTimerData = styled.p`
   margin-top: 5px;
 `;
 
-const TimerDisplay = () => {
-  const [timers, setTimers] = useState([]);
-  const [now, setNow] = useState(null);
+const TimerDisplay: React.FC = () => {
+  const [timers, setTimers] = useState<(string|null)[]>([]);
+  const [now, setNow] = useState<number | null>(null);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    const timerData = [];
+    const timerData: (string|null)[] = [];
     for (let i = 1; i <= 4; i++) {
       timerData.push(urlParams.get(`time${i}`));
     }
