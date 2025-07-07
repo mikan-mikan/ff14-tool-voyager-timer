@@ -33,7 +33,6 @@ const StyledInfo = styled.p`
 
 type TimerFormField = keyof Timer;
 
-
 const TimerSettings: React.FC = () => {
   const [timers, setTimers] = useState<Timer[]>([
     { id: 1, method: "relative", days: "", hours: "", minutes: "", absoluteTime: "" },
@@ -44,7 +43,7 @@ const TimerSettings: React.FC = () => {
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    const newTimers = timers.map((timer) => {
+    const newTimers: Timer[] = timers.map((timer) => {
       const timeParam = urlParams.get(`time${timer.id}`);
       if (timeParam) {
         const timestamp = parseInt(timeParam);
@@ -55,7 +54,7 @@ const TimerSettings: React.FC = () => {
           const localDateTime = formatDateTimeLocal(new Date(timestamp));
           return {
             ...timer,
-            method: "relative" as const,
+            method: "relative",
             days: String(days),
             hours: String(hours),
             minutes: String(minutes),
@@ -65,7 +64,7 @@ const TimerSettings: React.FC = () => {
       }
       return timer;
     });
-    setTimers(newTimers as Timer[]);
+    setTimers(newTimers);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
