@@ -5,12 +5,16 @@
  * @param {number} ms
  * @returns {{days: number, hours: number, minutes: number, seconds: number}}
  */
+const MS_PER_DAY = 86400000;
+const MS_PER_HOUR = 3600000;
+const MS_PER_MINUTE = 60000;
+const MS_PER_SECOND = 1000;
+
 export function millisecondsToTimeParts(ms) {
-  const days = Math.floor(ms / 86400000);
-  const hours = Math.floor((ms % 86400000) / 3600000);
-  const minutes = Math.floor((ms % 3600000) / 60000);
-  const seconds = Math.floor((ms % 60000) / 1000);
-  return { days, hours, minutes, seconds };
+  const days = Math.floor(ms / MS_PER_DAY);
+  const hours = Math.floor((ms % MS_PER_DAY) / MS_PER_HOUR);
+  const minutes = Math.floor((ms % MS_PER_HOUR) / MS_PER_MINUTE);
+  const seconds = Math.floor((ms % MS_PER_MINUTE) / MS_PER_SECOND);
 }
 
 /**
