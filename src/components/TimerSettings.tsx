@@ -113,7 +113,7 @@ const TimerSettings: React.FC = () => {
             key={timer.id}
             timer={timer}
             onUpdate={(field, value) =>
-              handleUpdateTimer(timer.id, field as TimerFormField, value)
+              handleUpdateTimer(timer.id, field, value)
             }
           />
         ))}
