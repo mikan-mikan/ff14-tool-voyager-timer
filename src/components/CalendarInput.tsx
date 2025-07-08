@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import type { CalendarInputProps } from "../types/TimerTypes";
 
 const StyledCalendarContainer = styled.div`
   margin-top: 0.5rem;
@@ -18,7 +19,7 @@ const StyledCalendarField = styled.input`
   }
 `;
 
-const CalendarInput = ({ id, absoluteTime, onUpdate }) => (
+const CalendarInput = ({ id, absoluteTime, onUpdate }: CalendarInputProps) => (
   <StyledCalendarContainer id={`calendar-input-${id}`}>
     <StyledCalendarField
       type="datetime-local"

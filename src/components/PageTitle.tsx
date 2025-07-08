@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import type { WithChildren } from "../types/Common";
 
 const StyledPageTitle = styled.h1`
   font-size: 2rem;
@@ -9,12 +10,8 @@ const StyledPageTitle = styled.h1`
   }
 `;
 
-const PageTitle = ({ children }) => {
-  return (
-    <StyledPageTitle>
-      {children}
-    </StyledPageTitle>
-  );
+const PageTitle = ({ children }: WithChildren) => {
+  return <StyledPageTitle>{children}</StyledPageTitle>;
 };
 
 export default PageTitle;

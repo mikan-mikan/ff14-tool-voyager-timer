@@ -1,16 +1,22 @@
-// src/utils/time.js
-
+// src/utils/time.ts
 /**
  * ミリ秒を日・時・分・秒に分解
  * @param {number} ms
  * @returns {{days: number, hours: number, minutes: number, seconds: number}}
  */
-const MS_PER_DAY = 86400000;
-const MS_PER_HOUR = 3600000;
-const MS_PER_MINUTE = 60000;
-const MS_PER_SECOND = 1000;
+export const MS_PER_DAY = 86400000;
+export const MS_PER_HOUR = 3600000;
+export const MS_PER_MINUTE = 60000;
+export const MS_PER_SECOND = 1000;
 
-export function millisecondsToTimeParts(ms) {
+export interface TimeParts {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}
+
+export function millisecondsToTimeParts(ms: number): TimeParts {
   const days = Math.floor(ms / MS_PER_DAY);
   const hours = Math.floor((ms % MS_PER_DAY) / MS_PER_HOUR);
   const minutes = Math.floor((ms % MS_PER_HOUR) / MS_PER_MINUTE);
@@ -23,8 +29,8 @@ export function millisecondsToTimeParts(ms) {
  * @param {Date} date
  * @returns {string}
  */
-export function formatDateTimeLocal(date) {
+export function formatDateTimeLocal(date: Date): string {
   const offset = date.getTimezoneOffset();
-  const local = new Date(date.getTime() - offset * 60000);
+  const local = new Date(date.getTime() - offset * MS_PER_MINUTE);
   return local.toISOString().slice(0, 16);
 }

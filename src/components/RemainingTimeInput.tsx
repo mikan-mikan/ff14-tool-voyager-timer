@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import type { RemainingTimeInputProps } from "../types/TimerTypes";
 
 const StyledContainer = styled.div`
   margin-top: 0.5rem;
@@ -30,7 +31,7 @@ const StyledInputField = styled.input`
   }
 `;
 
-const RemainingTimeInput = ({ id, days, hours, minutes, onUpdate }) => (
+const RemainingTimeInput = ({ id, days, hours, minutes, onUpdate }: RemainingTimeInputProps) => (
   <StyledContainer id={`remaining-time-inputs-${id}`}>
     <StyledLabel>
       <StyledInputField

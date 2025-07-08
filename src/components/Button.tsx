@@ -1,6 +1,6 @@
-import React from "react";
 import styled from "@emotion/styled";
 import "@fontsource/zen-kaku-gothic-new";
+import type { ButtonProps } from "../types/ButtonProps";
 
 const StyledButton = styled.button`
   padding: 0.6rem 2rem;
@@ -23,10 +23,9 @@ const StyledButton = styled.button`
   @media (max-width: 768px) {
     font-size: 1rem;
   }
-
 `;
 
-const Button = ({ children, onClick }) => {
+const Button = ({ children, onClick }: ButtonProps) => {
   return (
     <StyledButton onClick={onClick}>
       {children}
