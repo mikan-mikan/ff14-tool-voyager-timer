@@ -31,6 +31,6 @@ export function millisecondsToTimeParts(ms: number): TimeParts {
  */
 export function formatDateTimeLocal(date: Date): string {
   const offset = date.getTimezoneOffset();
-  const local = new Date(date.getTime() - offset * 60000);
+  const local = new Date(date.getTime() - offset * MS_PER_MINUTE);
   return local.toISOString().slice(0, 16);
 }
