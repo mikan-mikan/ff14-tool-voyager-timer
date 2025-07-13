@@ -17,6 +17,13 @@ const StyledLabel = styled.label`
 
 const StyledToggleWrap = styled.div`
   position: relative;
+  border-radius: 1rem;
+  transition: box-shadow 0.2s;
+  &:focus-within {
+    outline: 2px solid var(--text-primary);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.15);
+  }
 `;
 
 const StyledInput = styled.input`
