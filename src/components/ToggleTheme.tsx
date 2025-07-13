@@ -52,7 +52,8 @@ const ToggleTheme: React.FC = () => {
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
-    background-color: var(--text-primary);
+    // background-color: var(--text-primary);
+    background-color: var(${({ themeDark }) => (themeDark ? "--text-primary" : "--text-button")});
     transform: translateX(${({ themeDark }) => (themeDark ? "1.5rem" : "0")});
   `;
 
