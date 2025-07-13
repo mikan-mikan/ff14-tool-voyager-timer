@@ -4,6 +4,7 @@ import Button from "./Button";
 import PageTitle from "./PageTitle";
 import ButtonWrap from "./ButtonWrap";
 import { millisecondsToTimeParts } from "../utils/time";
+import PageSubTitle from "./PageSubTitle";
 
 const StyledTimerTitle = styled.p`
   font-weight: bold;
@@ -46,7 +47,8 @@ const TimerDisplay: React.FC = () => {
 
   return (
     <div>
-      <PageTitle>FF14 サブマリンボイジャー運行状況</PageTitle>
+      <PageTitle>FF14 サブマリンボイジャー</PageTitle>
+      <PageSubTitle>時間設定画面</PageSubTitle>
       <p>
         現在の時刻:{" "}
         {now

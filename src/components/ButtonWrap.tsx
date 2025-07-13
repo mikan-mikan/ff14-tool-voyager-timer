@@ -4,12 +4,11 @@ import "@fontsource/zen-kaku-gothic-new";
 import type { WithChildren } from "../types/Common";
 
 const StyledButtonWrap = styled.div`
+  margin-top: 2rem;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
-  margin-top: 4rem;
-  width: 100%;
-  align-items: center;
+  gap: 1rem;
 `;
 
 const ButtonWrap = ({ children }: WithChildren) => {

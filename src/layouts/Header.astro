@@ -1,6 +1,13 @@
+---
+import ToggleTheme from "../components/ToggleTheme";
+---
+
 <header class="header">
   <div class="header__inner">
     <div class="lead">FF14 サブマリンボイジャー残り時間表示ツール</div>
+    <div>
+      <ToggleTheme client:only />
+    </div>
   </div>
 </header>
 
@@ -10,12 +17,9 @@
   }
   .header__inner {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 1rem 0;
-    width: 90%;
+    justify-content: space-between;
+    padding: 1rem;
     margin: 0 auto;
-    max-width: 800px;
   }
   .lead {
     margin: 0;

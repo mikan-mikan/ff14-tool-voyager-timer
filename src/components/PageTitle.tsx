@@ -3,10 +3,13 @@ import styled from "@emotion/styled";
 import type { WithChildren } from "../types/Common";
 
 const StyledPageTitle = styled.h1`
-  font-size: 2rem;
   margin: 0;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
   @media (max-width: 768px) {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
   }
 `;
 
