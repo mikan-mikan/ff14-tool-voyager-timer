@@ -8,6 +8,12 @@ import type { Timer } from "../types/TimerTypes";
 import PageTitle from "./PageTitle";
 import PageSubTitle from "./PageSubTitle";
 
+const StyledLead = styled.p`
+  margin: 0.5rem auto 0;
+  color: var(--text-secondary);
+  text-align: center;
+`;
+
 function calculateTimestamp(
   method: string,
   days: string,
@@ -92,12 +98,6 @@ const TimerSettings: React.FC = () => {
     }
     window.location.href = `/timer?${params.join("&")}`;
   };
-
-  const StyledLead = styled.p`
-    margin: 0.5rem auto 0;
-    color: var(--text-secondary);
-    text-align: center;
-  `;
 
   return (
     <div>
