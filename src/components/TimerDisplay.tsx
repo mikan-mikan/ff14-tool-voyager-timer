@@ -6,10 +6,7 @@ import ButtonWrap from "./ButtonWrap";
 import { millisecondsToTimeParts } from "../utils/time";
 import PageSubTitle from "./PageSubTitle";
 import CardTitle from "./CardTitle";
-
-const StyledHeader = styled.div`
-  margin-bottom: 2rem;
-`;
+import PageHeader from "./PageHeader";
 
 const StyledTimerData = styled.p`
   color: var(--text-secondary);
@@ -79,7 +76,7 @@ const TimerDisplay: React.FC = () => {
 
   return (
     <div>
-      <StyledHeader>
+      <PageHeader>
         <PageTitle>FF14 サブマリンボイジャー</PageTitle>
         <PageSubTitle>運行状況</PageSubTitle>
         <StyledPageTime>
@@ -88,7 +85,7 @@ const TimerDisplay: React.FC = () => {
             ? new Date(now).toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })
             : "Loading..."}
         </StyledPageTime>
-      </StyledHeader>
+      </PageHeader>
       <PageContainer>
         {timers.map((time, index) => {
           const id = index + 1;

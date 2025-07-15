@@ -7,11 +7,18 @@ import { millisecondsToTimeParts, formatDateTimeLocal } from "../utils/time";
 import type { Timer } from "../types/TimerTypes";
 import PageTitle from "./PageTitle";
 import PageSubTitle from "./PageSubTitle";
+import PageHeader from "./PageHeader";
 
 const StyledLead = styled.p`
   margin: 0.5rem auto 0;
   color: var(--text-secondary);
   text-align: center;
+`;
+
+const StyledCardWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 `;
 
 function calculateTimestamp(
@@ -101,13 +108,15 @@ const TimerSettings: React.FC = () => {
 
   return (
     <div>
-      <PageTitle>FF14 サブマリンボイジャー</PageTitle>
-      <PageSubTitle>時間設定画面</PageSubTitle>
-      <StyledLead>
-        「残り時間」か「帰還予定時刻」を選択して、<br />時間を入力してください。<br
-        />再設定時、時刻が過ぎている場合はリセットされています。
-      </StyledLead>
-      <div id="submarines">
+      <PageHeader>
+        <PageTitle>FF14 サブマリンボイジャー</PageTitle>
+        <PageSubTitle>時間設定画面</PageSubTitle>
+        <StyledLead>
+          「残り時間」か「帰還予定時刻」を選択して、<br />時間を入力してください。<br
+          />再設定時、時刻が過ぎている場合はリセットされています。
+        </StyledLead>
+      </PageHeader>
+      <StyledCardWrap>
         {timers.map((timer) => (
           <TimerForm
             key={timer.id}
@@ -117,7 +126,7 @@ const TimerSettings: React.FC = () => {
             }
           />
         ))}
-      </div>
+      </StyledCardWrap>
       <ButtonWrap>
         <Button onClick={handleSubmit}>
           設定完了
