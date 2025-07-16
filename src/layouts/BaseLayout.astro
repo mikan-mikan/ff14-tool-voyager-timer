@@ -21,28 +21,18 @@ const { title } = Astro.props;
     />
     <title>{title}</title>
     <link rel="icon" href="https://ff14-voyager-timer.vercel.app/favicon.ico" />
-    <meta
-      property="og:title"
-      content="FF14 サブマリンボイジャー残り時間表示ツール"
-    />
+    <meta property="og:title" content="FF14 サブマリンボイジャー残り時間表示ツール" />
     <meta
       property="og:description"
       content="FF14のサブマリンボイジャーの残り時間を表示します。ゲームにログインしていない時に残り時間を確認できます。今は潜水艦4隻分を設定できます。"
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://ff14-voyager-timer.vercel.app/" />
-    <meta
-      property="og:image"
-      content="https://ff14-voyager-timer.vercel.app/ogp.jpg"
-    />
-    <meta
-      property="og:site_name"
-      content="FF14 サブマリンボイジャー残り時間表示ツール"
-    />
+    <meta property="og:image" content="https://ff14-voyager-timer.vercel.app/ogp.jpg" />
+    <meta property="og:site_name" content="FF14 サブマリンボイジャー残り時間表示ツール" />
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDR7J7W364"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDR7J7W364"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -54,9 +44,7 @@ const { title } = Astro.props;
 
     <script>
       (function () {
-        const prefersDarkScheme = window.matchMedia(
-          "(prefers-color-scheme: dark)"
-        ).matches;
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
         const systemTheme = prefersDarkScheme ? "dark" : "light";
         const storedTheme = localStorage.getItem("theme");
         const theme = storedTheme ?? systemTheme;
@@ -141,8 +129,8 @@ const { title } = Astro.props;
     --border-input: #c7d9dd;
 
     --shadow-sm: 0 0.0625rem 0.125rem 0 rgb(0 0 0 / 0.05);
-    --shadow-lg: 0 0.625rem 0.9375rem -0.1875rem rgb(0 0 0 / 0.1),
-      0 0.25rem 0.375rem -0.25rem rgb(0 0 0 / 0.1);
+    --shadow-lg:
+      0 0.625rem 0.9375rem -0.1875rem rgb(0 0 0 / 0.1), 0 0.25rem 0.375rem -0.25rem rgb(0 0 0 / 0.1);
   }
 
   /* .dark { */

@@ -22,8 +22,8 @@ const StyledPageTime = styled.p`
 const StyledCard = styled.div`
   display: flex;
   flex-direction: column;
-  gap: .5rem;
-  border-bottom: .15rem solid var(--border-primary);
+  gap: 0.5rem;
+  border-bottom: 0.15rem solid var(--border-primary);
   padding-bottom: 1rem;
   &:last-child {
     border-bottom: none;
@@ -42,14 +42,13 @@ const PageContainer = styled.div`
   transition: all 0.3s;
 `;
 
-
 const TimerDisplay: React.FC = () => {
-  const [timers, setTimers] = useState<(string|null)[]>([]);
+  const [timers, setTimers] = useState<(string | null)[]>([]);
   const [now, setNow] = useState<number | null>(null);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    const timerData: (string|null)[] = [];
+    const timerData: (string | null)[] = [];
     for (let i = 1; i <= 4; i++) {
       timerData.push(urlParams.get(`time${i}`));
     }
@@ -81,9 +80,7 @@ const TimerDisplay: React.FC = () => {
         <PageSubTitle>運行状況</PageSubTitle>
         <StyledPageTime>
           現在の時刻:{" "}
-          {now
-            ? new Date(now).toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })
-            : "Loading..."}
+          {now ? new Date(now).toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" }) : "Loading..."}
         </StyledPageTime>
       </PageHeader>
       <PageContainer>
@@ -127,12 +124,8 @@ const TimerDisplay: React.FC = () => {
         })}
       </PageContainer>
       <ButtonWrap>
-        <Button onClick={goToSetTime}>
-          時間を変更する
-        </Button>
-        <Button onClick={urlCopy}>
-          URLをコピーする
-        </Button>
+        <Button onClick={goToSetTime}>時間を変更する</Button>
+        <Button onClick={urlCopy}>URLをコピーする</Button>
       </ButtonWrap>
     </div>
   );

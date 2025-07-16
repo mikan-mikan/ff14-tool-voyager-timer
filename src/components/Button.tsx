@@ -9,8 +9,9 @@ const StyledButton = styled.button`
   padding: 0.75rem 3rem;
   border-radius: 0.5rem;
   border: none;
-  box-shadow: 0 0.25rem 0.375rem -0.0625rem rgba(173, 178, 212, 0.2),
-  0 0.125rem 0.25rem -0.125rem rgba(173, 178, 212, 0.2);
+  box-shadow:
+    0 0.25rem 0.375rem -0.0625rem rgba(173, 178, 212, 0.2),
+    0 0.125rem 0.25rem -0.125rem rgba(173, 178, 212, 0.2);
   transition: all 0.3s;
   cursor: pointer;
   &:hover {
@@ -23,11 +24,7 @@ const StyledButton = styled.button`
 `;
 
 const Button = ({ children, onClick }: ButtonProps) => {
-  return (
-    <StyledButton onClick={onClick}>
-      {children}
-    </StyledButton>
-  );
+  return <StyledButton onClick={onClick}>{children}</StyledButton>;
 };
 
 export default Button;

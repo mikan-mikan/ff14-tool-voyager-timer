@@ -14,7 +14,7 @@ const StyledLink = styled.a`
   }
 `;
 
-const Link = ({ children, target = '_self', href, ...props }: LinkProps) => {
+const Link = ({ children, target = "_self", href, ...props }: LinkProps) => {
   return (
     <StyledLink href={href} target={target} {...props}>
       {children}

@@ -5,7 +5,6 @@ import CalendarInput from "./CalendarInput";
 import type { TimerFormProps } from "../types/TimerTypes";
 import CardTitle from "./CardTitle";
 
-
 const StyledInputBoxes = styled.div`
   display: flex;
   flex-direction: column;
@@ -38,9 +37,9 @@ const StyledLabel = styled.label<{ checked?: boolean }>`
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
-  color: ${({ checked }) => checked ? "var(--text-toggle-active)" : "var(--text-toggle)"};
-  background-color: ${({ checked }) => checked ? "var(--bg-toggle-active)" : "transparent"};
-  box-shadow: ${({ checked }) => checked ? "var(--shadow-sm)" : "none"};
+  color: ${({ checked }) => (checked ? "var(--text-toggle-active)" : "var(--text-toggle)")};
+  background-color: ${({ checked }) => (checked ? "var(--bg-toggle-active)" : "transparent")};
+  box-shadow: ${({ checked }) => (checked ? "var(--shadow-sm)" : "none")};
   transition: all 0.2s;
 `;
 const StyledCard = styled.div`
@@ -58,40 +57,34 @@ const TimerForm = ({ timer, onUpdate }: TimerFormProps) => {
     <StyledCard>
       <CardTitle>潜水艦{id}</CardTitle>
       <StyledInputBoxes>
-      <StyledRadioBox>
-        <div style={{ position: 'relative' }}>
-          <StyledInputRadio
-            id={`relative${id}`}
-            type="radio"
-            name={`method${id}`}
-            value="relative"
-            checked={method === "relative"}
-            onChange={() => onUpdate("method", "relative")}
-          />
-          <StyledLabel
-            htmlFor={`relative${id}`}
-            checked={method === "relative"}
-          >
-            残り時間
-          </StyledLabel>
-        </div>
-        <div style={{ position: 'relative' }}>
-          <StyledInputRadio
-            id={`absolute${id}`}
-            type="radio"
-            name={`method${id}`}
-            value="absolute"
-            checked={method === "absolute"}
-            onChange={() => onUpdate("method", "absolute")}
-          />
-          <StyledLabel
-            htmlFor={`absolute${id}`}
-            checked={method === "absolute"}
-          >
-            帰還予定時刻
-          </StyledLabel>
-        </div>
-      </StyledRadioBox>
+        <StyledRadioBox>
+          <div style={{ position: "relative" }}>
+            <StyledInputRadio
+              id={`relative${id}`}
+              type="radio"
+              name={`method${id}`}
+              value="relative"
+              checked={method === "relative"}
+              onChange={() => onUpdate("method", "relative")}
+            />
+            <StyledLabel htmlFor={`relative${id}`} checked={method === "relative"}>
+              残り時間
+            </StyledLabel>
+          </div>
+          <div style={{ position: "relative" }}>
+            <StyledInputRadio
+              id={`absolute${id}`}
+              type="radio"
+              name={`method${id}`}
+              value="absolute"
+              checked={method === "absolute"}
+              onChange={() => onUpdate("method", "absolute")}
+            />
+            <StyledLabel htmlFor={`absolute${id}`} checked={method === "absolute"}>
+              帰還予定時刻
+            </StyledLabel>
+          </div>
+        </StyledRadioBox>
         {method === "relative" ? (
           <RemainingTimeInput
             id={id}
@@ -101,11 +94,7 @@ const TimerForm = ({ timer, onUpdate }: TimerFormProps) => {
             onUpdate={onUpdate}
           />
         ) : (
-          <CalendarInput
-            id={id}
-            absoluteTime={absoluteTime}
-            onUpdate={onUpdate}
-          />
+          <CalendarInput id={id} absoluteTime={absoluteTime} onUpdate={onUpdate} />
         )}
       </StyledInputBoxes>
     </StyledCard>

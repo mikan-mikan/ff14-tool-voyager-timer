@@ -2,10 +2,17 @@ import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 
 const getInitialTheme = () => {
-  if (typeof window === "undefined") return "light";
+  if (typeof window === "undefined") {
+    return "light";
+  }
   const saved = localStorage.getItem("theme");
-  if (saved) return saved;
-  if (window.matchMedia("(prefers-color-scheme: dark)").matches) return "dark";
+  if (saved) {
+    return saved;
+  }
+
+  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    return "dark";
+  }
   return "light";
 };
 
@@ -22,7 +29,7 @@ const StyledToggleWrap = styled.div`
   &:focus-within {
     outline: 2px solid var(--text-primary);
     outline-offset: 2px;
-    box-shadow: 0 0 0 3px rgba(0,0,0,0.15);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15);
   }
 `;
 
@@ -55,7 +62,9 @@ const ToggleTheme: React.FC = () => {
   const [theme, setTheme] = useState<string>(getInitialTheme());
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window === "undefined") {
+      return;
+    }
     document.documentElement.dataset.theme = theme;
     localStorage.setItem("theme", theme);
   }, [theme]);

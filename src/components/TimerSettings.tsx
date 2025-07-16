@@ -72,14 +72,11 @@ const TimerSettings: React.FC = () => {
       return timer;
     });
     setTimers(newTimers);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleUpdateTimer = (id: number, field: TimerFormField, value: string) => {
     setTimers((prev) =>
-      prev.map((timer) =>
-        timer.id === id ? { ...timer, [field]: value } : timer
-      )
+      prev.map((timer) => (timer.id === id ? { ...timer, [field]: value } : timer))
     );
   };
 
@@ -112,8 +109,11 @@ const TimerSettings: React.FC = () => {
         <PageTitle>FF14 サブマリンボイジャー</PageTitle>
         <PageSubTitle>時間設定画面</PageSubTitle>
         <StyledLead>
-          「残り時間」か「帰還予定時刻」を選択して、<br />時間を入力してください。<br
-          />再設定時、時刻が過ぎている場合はリセットされています。
+          「残り時間」か「帰還予定時刻」を選択して、
+          <br />
+          時間を入力してください。
+          <br />
+          再設定時、時刻が過ぎている場合はリセットされています。
         </StyledLead>
       </PageHeader>
       <StyledCardWrap>
@@ -121,16 +121,12 @@ const TimerSettings: React.FC = () => {
           <TimerForm
             key={timer.id}
             timer={timer}
-            onUpdate={(field, value) =>
-              handleUpdateTimer(timer.id, field, value)
-            }
+            onUpdate={(field, value) => handleUpdateTimer(timer.id, field, value)}
           />
         ))}
       </StyledCardWrap>
       <ButtonWrap>
-        <Button onClick={handleSubmit}>
-          設定完了
-        </Button>
+        <Button onClick={handleSubmit}>設定完了</Button>
       </ButtonWrap>
     </div>
   );
