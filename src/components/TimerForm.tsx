@@ -24,6 +24,10 @@ const StyledRadioBox = styled.div`
 const StyledInputRadio = styled.input`
   position: absolute;
   opacity: 0;
+  &:focus-visible + label {
+    outline: 2px solid var(--text-primary);
+    outline-offset: 2px;
+  }
 `;
 const StyledLabel = styled.label<{ checked?: boolean }>`
   display: block;
@@ -46,10 +50,6 @@ const StyledCard = styled.div`
   padding: 1.5rem;
   box-shadow: var(--shadow-sm);
   transition: all 0.3s;
-  input:focus-visible + label {
-    outline: 2px solid var(--text-primary);
-    outline-offset: 2px;
-  }
 `;
 
 const TimerForm = ({ timer, onUpdate }: TimerFormProps) => {
