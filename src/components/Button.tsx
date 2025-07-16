@@ -5,6 +5,7 @@ import type { ButtonProps } from "../types/ButtonProps";
 const StyledButton = styled.button`
   background-color: var(--text-accent);
   color: var(--text-button);
+  font-size: 0.875rem;
   font-weight: 700;
   padding: 0.75rem 3rem;
   border-radius: 0.5rem;
@@ -14,8 +15,10 @@ const StyledButton = styled.button`
     0 0.125rem 0.25rem -0.125rem rgba(173, 178, 212, 0.2);
   transition: all 0.3s;
   cursor: pointer;
-  &:hover {
-    transform: scale(1.05);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: scale(1.05);
+    }
   }
   &:focus {
     outline: none;
