@@ -4,7 +4,7 @@ import "@fontsource/zen-kaku-gothic-new";
 import type { LinkProps } from "../types/LinkProps";
 
 const StyledLink = styled.a`
-  color: var(--color-link);
+  color: var(--text-secondary);
   text-decoration: underline;
   @media (hover: hover) {
     &:hover,
@@ -14,7 +14,7 @@ const StyledLink = styled.a`
   }
 `;
 
-const Link = ({ children, target = '_self', href, ...props }: LinkProps) => {
+const Link = ({ children, target = "_self", href, ...props }: LinkProps) => {
   return (
     <StyledLink href={href} target={target} {...props}>
       {children}

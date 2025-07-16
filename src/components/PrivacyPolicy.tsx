@@ -1,10 +1,15 @@
 import React from "react";
 import PageTitle from "./PageTitle";
 import Link from "./Link";
+import ButtonWrap from "./ButtonWrap";
+import Button from "./Button";
 
 const PrivacyPolicy = () => {
   const params = new URLSearchParams(window.location.search);
   const urlParams = `?${params.toString()}`;
+  const goBack = () => {
+    window.location.href = "/" + urlParams;
+  };
   return (
     <div>
       <PageTitle>プライバシーポリシー</PageTitle>
@@ -17,13 +22,21 @@ const PrivacyPolicy = () => {
       </p>
       <br />
       <p>この規約に関しての詳細は以下をご参照ください。</p>
-      <Link href={"https://policies.google.com/technologies/partner-sites?hl=ja"} target="_blank" rel="noreferrer">Googleポリシーと規約</Link>
+      <Link
+        href={"https://policies.google.com/technologies/partner-sites?hl=ja"}
+        target="_blank"
+        rel="noreferrer"
+      >
+        Googleポリシーと規約
+      </Link>
       <br />
       <p>
         当サイトからリンクやバナーなどによって他のサイトに移動された場合、移動先サイトで提供される情報、サービス等について一切の責任を負いません。
       </p>
       <br />
-      <Link href={`/${urlParams}`}>TOPへ戻る</Link>
+      <ButtonWrap>
+        <Button onClick={goBack}>TOPへ戻る</Button>
+      </ButtonWrap>
     </div>
   );
 };

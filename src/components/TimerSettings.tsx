@@ -2,10 +2,24 @@ import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import TimerForm from "./TimerForm";
 import Button from "./Button";
-import PageTitle from "./PageTitle";
 import ButtonWrap from "./ButtonWrap";
 import { millisecondsToTimeParts, formatDateTimeLocal } from "../utils/time";
 import type { Timer } from "../types/TimerTypes";
+import PageTitle from "./PageTitle";
+import PageSubTitle from "./PageSubTitle";
+import PageHeader from "./PageHeader";
+
+const StyledLead = styled.p`
+  margin: 0.5rem auto 0;
+  color: var(--text-secondary);
+  text-align: center;
+`;
+
+const StyledCardWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+`;
 
 function calculateTimestamp(
   method: string,
@@ -23,13 +37,6 @@ function calculateTimestamp(
     (parseInt(minutes) || 0) * 60000;
   return totalMilliseconds > 0 ? Date.now() + totalMilliseconds : null;
 }
-
-const StyledInfo = styled.p`
-  margin-bottom: 1rem;
-  @media (max-width: 768px) {
-    font-size: 0.9rem;
-  }
-`;
 
 type TimerFormField = keyof Timer;
 
@@ -65,14 +72,11 @@ const TimerSettings: React.FC = () => {
       return timer;
     });
     setTimers(newTimers);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleUpdateTimer = (id: number, field: TimerFormField, value: string) => {
     setTimers((prev) =>
-      prev.map((timer) =>
-        timer.id === id ? { ...timer, [field]: value } : timer
-      )
+      prev.map((timer) => (timer.id === id ? { ...timer, [field]: value } : timer))
     );
   };
 
@@ -101,27 +105,28 @@ const TimerSettings: React.FC = () => {
 
   return (
     <div>
-      <PageTitle>FF14 サブマリンボイジャー時間設定画面</PageTitle>
-      <StyledInfo>
-        4隻まで登録できます。「残り時間」か「帰還予定時刻」を選択・入力して、「設定完了」を押してください。
-        <br />
-        再設定の場合、時刻が過ぎている場合はリセットされています。
-      </StyledInfo>
-      <div id="submarines">
+      <PageHeader>
+        <PageTitle>FF14 サブマリンボイジャー</PageTitle>
+        <PageSubTitle>時間設定画面</PageSubTitle>
+        <StyledLead>
+          「残り時間」か「帰還予定時刻」を選択して、
+          <br />
+          時間を入力してください。
+          <br />
+          再設定時、時刻が過ぎている場合はリセットされています。
+        </StyledLead>
+      </PageHeader>
+      <StyledCardWrap>
         {timers.map((timer) => (
           <TimerForm
             key={timer.id}
             timer={timer}
-            onUpdate={(field, value) =>
-              handleUpdateTimer(timer.id, field, value)
-            }
+            onUpdate={(field, value) => handleUpdateTimer(timer.id, field, value)}
           />
         ))}
-      </div>
+      </StyledCardWrap>
       <ButtonWrap>
-        <Button onClick={handleSubmit}>
-          設定完了
-        </Button>
+        <Button onClick={handleSubmit}>設定完了</Button>
       </ButtonWrap>
     </div>
   );

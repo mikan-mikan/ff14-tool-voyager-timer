@@ -4,22 +4,51 @@ import Button from "./Button";
 import PageTitle from "./PageTitle";
 import ButtonWrap from "./ButtonWrap";
 import { millisecondsToTimeParts } from "../utils/time";
+import PageSubTitle from "./PageSubTitle";
+import CardTitle from "./CardTitle";
+import PageHeader from "./PageHeader";
 
-const StyledTimerTitle = styled.p`
-  font-weight: bold;
-  margin-bottom: 0;
-`;
 const StyledTimerData = styled.p`
-  margin-top: 5px;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin: 0;
+`;
+const StyledPageTime = styled.p`
+  margin: 0.5rem auto 0;
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 32rem;
+`;
+const StyledCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-bottom: 0.15rem solid var(--border-primary);
+  padding-bottom: 1rem;
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+`;
+const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s;
 `;
 
 const TimerDisplay: React.FC = () => {
-  const [timers, setTimers] = useState<(string|null)[]>([]);
+  const [timers, setTimers] = useState<(string | null)[]>([]);
   const [now, setNow] = useState<number | null>(null);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    const timerData: (string|null)[] = [];
+    const timerData: (string | null)[] = [];
     for (let i = 1; i <= 4; i++) {
       timerData.push(urlParams.get(`time${i}`));
     }
@@ -46,22 +75,23 @@ const TimerDisplay: React.FC = () => {
 
   return (
     <div>
-      <PageTitle>FF14 サブマリンボイジャー運行状況</PageTitle>
-      <p>
-        現在の時刻:{" "}
-        {now
-          ? new Date(now).toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })
-          : "Loading..."}
-      </p>
-      <div>
+      <PageHeader>
+        <PageTitle>FF14 サブマリンボイジャー</PageTitle>
+        <PageSubTitle>運行状況</PageSubTitle>
+        <StyledPageTime>
+          現在の時刻:{" "}
+          {now ? new Date(now).toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" }) : "Loading..."}
+        </StyledPageTime>
+      </PageHeader>
+      <PageContainer>
         {timers.map((time, index) => {
           const id = index + 1;
           if (!time) {
             return (
-              <div key={id}>
-                <StyledTimerTitle>潜水艦{id}</StyledTimerTitle>
+              <StyledCard key={id}>
+                <CardTitle>潜水艦{id}</CardTitle>
                 <StyledTimerData id={`timer${id}`}>データがありません。</StyledTimerData>
-              </div>
+              </StyledCard>
             );
           }
           const timestamp = parseInt(time);
@@ -70,8 +100,8 @@ const TimerDisplay: React.FC = () => {
           if (timeLeft > 0) {
             const { days, hours, minutes, seconds } = millisecondsToTimeParts(timeLeft);
             return (
-              <div key={id}>
-                <StyledTimerTitle>潜水艦{id}</StyledTimerTitle>
+              <StyledCard key={id}>
+                <CardTitle>潜水艦{id}</CardTitle>
                 <StyledTimerData id={`timer${id}`}>
                   残り時間: {days}日 {hours}時間 {minutes}分 {seconds}秒
                   <br />
@@ -81,25 +111,21 @@ const TimerDisplay: React.FC = () => {
                   })}
                   )
                 </StyledTimerData>
-              </div>
+              </StyledCard>
             );
           } else {
             return (
-              <div key={id}>
-                <StyledTimerTitle>潜水艦{id}</StyledTimerTitle>
+              <StyledCard key={id}>
+                <CardTitle>潜水艦{id}</CardTitle>
                 <StyledTimerData id={`timer${id}`}>探索完了！</StyledTimerData>
-              </div>
+              </StyledCard>
             );
           }
         })}
-      </div>
+      </PageContainer>
       <ButtonWrap>
-        <Button onClick={goToSetTime}>
-          時間を変更する
-        </Button>
-        <Button onClick={urlCopy}>
-          URLをコピーする
-        </Button>
+        <Button onClick={goToSetTime}>時間を変更する</Button>
+        <Button onClick={urlCopy}>URLをコピーする</Button>
       </ButtonWrap>
     </div>
   );

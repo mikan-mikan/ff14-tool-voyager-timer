@@ -3,34 +3,28 @@ import "@fontsource/zen-kaku-gothic-new";
 import type { ButtonProps } from "../types/ButtonProps";
 
 const StyledButton = styled.button`
-  padding: 0.6rem 2rem;
+  background-color: var(--text-accent);
+  color: var(--text-button);
+  font-weight: 700;
+  padding: 0.75rem 3rem;
+  border-radius: 0.5rem;
+  border: none;
+  box-shadow:
+    0 0.25rem 0.375rem -0.0625rem rgba(173, 178, 212, 0.2),
+    0 0.125rem 0.25rem -0.125rem rgba(173, 178, 212, 0.2);
+  transition: all 0.3s;
   cursor: pointer;
-  background-color: var(--color-white);
-  border: 1px solid var(--color-text);
-  transition: all 0.1s ease-in-out;
-  font-size: 1.2rem;
-  font-family: "Zen Kaku Gothic New";
-  color: var(--color-text);
-
-  @media (hover: hover) {
-    &:hover,
-    &:focus {
-      background-color: var(--color-link);
-      color: var(--color-white);
-    }
+  &:hover {
+    transform: scale(1.05);
   }
-
-  @media (max-width: 768px) {
-    font-size: 1rem;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.25rem rgba(173, 178, 212, 0.4);
   }
 `;
 
 const Button = ({ children, onClick }: ButtonProps) => {
-  return (
-    <StyledButton onClick={onClick}>
-      {children}
-    </StyledButton>
-  );
+  return <StyledButton onClick={onClick}>{children}</StyledButton>;
 };
 
 export default Button;
