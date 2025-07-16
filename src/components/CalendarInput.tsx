@@ -3,19 +3,27 @@ import styled from "@emotion/styled";
 import type { CalendarInputProps } from "../types/TimerTypes";
 
 const StyledCalendarContainer = styled.div`
-  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const StyledCalendarField = styled.input`
-  padding: 0.5rem;
-  font-size: 1.3rem;
-  width: auto;
-  transition: background-color 0.3s;
+  color-scheme: light;
+  display: block;
+  width: 100%;
+  max-width: 18rem;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  color: var(--text-primary);
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-input);
+  transition: all 0.2s;
   &:focus {
-    background-color: var(--color-lightblue);
-  }
-  @media (max-width: 768px) {
-    font-size: 1.1rem;
+    outline: none;
+    border-color: var(--border-input);
+    box-shadow: 0 0 0 3px rgba(173, 178, 212, 0.4);
   }
 `;
 
