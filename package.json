@@ -14,7 +14,7 @@
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.0",
     "@fontsource/zen-kaku-gothic-new": "5.1.1",
-    "astro": "5.1.10",
+    "astro": "5.15.9",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
