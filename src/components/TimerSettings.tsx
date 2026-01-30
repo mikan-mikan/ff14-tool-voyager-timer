@@ -40,10 +40,12 @@ const StyledAddButton = styled.button`
   cursor: pointer;
   transition: all 0.2s;
 
-  &:hover:not(:disabled) {
-    border-color: var(--text-primary);
-    color: var(--text-primary);
-    background-color: var(--bg-card);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover:not(:disabled) {
+      border-color: var(--text-primary);
+      color: var(--text-primary);
+      background-color: var(--bg-card);
+    }
   }
 
   &:disabled {
