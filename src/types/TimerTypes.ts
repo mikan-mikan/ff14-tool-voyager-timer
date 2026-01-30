@@ -12,6 +12,8 @@ export interface Timer {
 export interface TimerFormProps {
   timer: Timer;
   onUpdate: (field: keyof Timer, value: string) => void;
+  onRemove?: () => void;
+  canRemove?: boolean;
 }
 
 export interface RemainingTimeInputProps {

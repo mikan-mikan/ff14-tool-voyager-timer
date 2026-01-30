@@ -49,13 +49,56 @@ const StyledCard = styled.div`
   padding: 1.5rem;
   box-shadow: var(--shadow-sm);
   transition: all 0.3s;
+  position: relative;
 `;
 
-const TimerForm = ({ timer, onUpdate }: TimerFormProps) => {
+const StyledCardHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const StyledRemoveButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: none;
+  border-radius: 0.375rem;
+  background-color: transparent;
+  color: var(--text-secondary);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: var(--bg-toggle-base);
+    color: var(--text-primary);
+  }
+
+  &:disabled {
+    opacity: 0;
+    cursor: default;
+    pointer-events: none;
+  }
+`;
+
+const TimerForm = ({ timer, onUpdate, onRemove, canRemove }: TimerFormProps) => {
   const { id, method, days, hours, minutes, absoluteTime } = timer;
   return (
     <StyledCard>
-      <CardTitle>潜水艦{id}</CardTitle>
+      <StyledCardHeader>
+        <CardTitle>潜水艦{id}</CardTitle>
+        <StyledRemoveButton
+          onClick={onRemove}
+          disabled={!canRemove}
+          aria-label={`潜水艦${id}を削除`}
+          title="削除"
+        >
+          ×
+        </StyledRemoveButton>
+      </StyledCardHeader>
       <StyledInputBoxes>
         <StyledRadioBox>
           <div style={{ position: "relative" }}>
