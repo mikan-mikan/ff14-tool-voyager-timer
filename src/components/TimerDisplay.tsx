@@ -42,14 +42,27 @@ const PageContainer = styled.div`
   transition: all 0.3s;
 `;
 
+const MIN_SUBMARINES = 4;
+const MAX_SUBMARINES = 24;
+
 const TimerDisplay: React.FC = () => {
   const [timers, setTimers] = useState<(string | null)[]>([]);
   const [now, setNow] = useState<number | null>(null);
+  const [submarineCount, setSubmarineCount] = useState<number>(MIN_SUBMARINES);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
+
+    // URLからcount（隻数）を取得、なければ4隻
+    const countParam = urlParams.get("count");
+    const count = countParam
+      ? Math.min(Math.max(parseInt(countParam) || MIN_SUBMARINES, MIN_SUBMARINES), MAX_SUBMARINES)
+      : MIN_SUBMARINES;
+
+    setSubmarineCount(count);
+
     const timerData: (string | null)[] = [];
-    for (let i = 1; i <= 4; i++) {
+    for (let i = 1; i <= count; i++) {
       timerData.push(urlParams.get(`time${i}`));
     }
     setTimers(timerData);

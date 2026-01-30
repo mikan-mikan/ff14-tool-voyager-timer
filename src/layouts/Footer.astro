@@ -5,6 +5,13 @@ const today = new Date();
 
 <footer class="footer">
   <div class="footer__inner">
+    <div class="changelog">
+      <p class="changelog__title">更新履歴</p>
+      <ul class="changelog__list">
+        <li>2026/01/30 - 潜水艦の隻数を4〜24隻に拡張</li>
+        <li>2025/07/16 - サイト公開</li>
+      </ul>
+    </div>
     <PrivacyLink client:only />
     <p class="lead">
       記載されている会社名・製品名・システム名などは、各社の商標、または登録商標です。
@@ -26,6 +33,33 @@ const today = new Date();
     width: 90%;
     margin: 0 auto;
     max-width: 800px;
+  }
+  .changelog {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+  }
+  .changelog__title {
+    margin: 0 0 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .changelog__list {
+    margin: 0;
+    padding-left: 1.25rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+  .changelog__list li {
+    margin-bottom: 0.25rem;
+  }
+  .changelog__list li:last-child {
+    margin-bottom: 0;
   }
   .lead {
     margin: 0.3rem 0 0;
